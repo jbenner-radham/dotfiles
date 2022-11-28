@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+set -o errexit
+
+brewpage () {
+    local opener='open'
+
+    # shellcheck disable=SC3028
+    if [ "${OSTYPE}" = 'linux-gnu' ]; then
+        opener='xdg-open'
+    fi
+
+    brew info "${1}" --json | jq --raw-output '.[0].homepage' | xargs "${opener}"
+}
+
+brewpage "$@"
