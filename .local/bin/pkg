@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+set -o errexit
+
+pkg () {
+    if [ "${1}" ]; then filter="${1}"; else filter=''; fi
+    jq ."${filter}" package.json
+}
+
+pkg "$@"
