@@ -2,7 +2,10 @@
 set -o errexit
 
 pkg () {
-    if [ "${1}" ]; then filter="${1}"; else filter=''; fi
+    local filter=''
+
+    if [ "${1}" ]; then filter="${1}"; fi
+
     jq ."${filter}" package.json
 }
 
