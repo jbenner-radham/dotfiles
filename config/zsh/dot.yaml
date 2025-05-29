@@ -1,0 +1,4 @@
+darwin|linux:
+  links:
+    .zshrc: ~/.zshrc
+

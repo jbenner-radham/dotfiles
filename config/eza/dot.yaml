@@ -1,0 +1,4 @@
+darwin|linux:
+  installs:
+    cmd: cargo install eza
+    depends: [rust]

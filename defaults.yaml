@@ -1,0 +1,5 @@
+linux[whoami.distro^="Ubuntu"]:
+  installs: sudo apt install -y {{ name }}
+linux[whoami.distro^="Fedora"]:
+  installs: yes | sudo dnf install {{ name }}
+
