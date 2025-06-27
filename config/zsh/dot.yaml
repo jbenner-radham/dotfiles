@@ -1,3 +1,7 @@
 darwin|linux:
   links:
     .zshrc: ~/.zshrc
+    completion.zsh: ~/.config/zsh/completion.zsh
+    directories.zsh: ~/.config/zsh/directories.zsh
+    history.zsh: ~/.config/zsh/history.zsh
+    key-bindings.zsh: ~/.config/zsh/key-bindings.zsh
