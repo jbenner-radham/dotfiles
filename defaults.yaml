@@ -1,5 +1,6 @@
-linux[whoami.distro^="Ubuntu"]:
-  installs: sudo apt install -y {{ name }}
+darwin:
+  installs: brew install {{ name }}
 linux[whoami.distro^="Fedora"]:
   installs: yes | sudo dnf install {{ name }}
-
+linux[whoami.distro^="Ubuntu"]:
+  installs: sudo apt install --assume-yes {{ name }}
