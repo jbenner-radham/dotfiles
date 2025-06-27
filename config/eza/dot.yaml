@@ -1,4 +1,6 @@
-darwin|linux:
-  installs:
-    cmd: cargo install eza
-    depends: [rust]
+darwin:
+  links:
+    dracula.yaml: ~/Library/Application\ Support/eza/theme.yml
+linux:
+  links:
+    dracula.yaml: ~/.config/eza/theme.yml
