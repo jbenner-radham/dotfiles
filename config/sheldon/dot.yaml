@@ -1,0 +1,5 @@
+darwin|linux:
+  installs:
+    cmd: brew install sheldon
+  links:
+    plugins.toml: ~/.config/sheldon/plugins.toml
