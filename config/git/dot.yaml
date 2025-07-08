@@ -1,0 +1,11 @@
+global:
+  links:
+    .gitconfig: ~/.gitconfig
+
+darwin:
+  links:
+    ignore.darwin: ~/.config/git/ignore
+
+linux:
+  links:
+    ignore.linux: ~/.config/git/ignore

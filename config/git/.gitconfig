@@ -1,0 +1,9 @@
+[user]
+	name = James Benner
+	email = hello@jamesbenner.com
+[init]
+	defaultBranch = main
+[core]
+	excludesFile = ~/.config/git/ignore
+[push]
+	autoSetupRemote = true
