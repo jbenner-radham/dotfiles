@@ -197,7 +197,7 @@ symbol = " "
 symbol = " "
 
 [memory_usage]
-disabled = false
+disabled = true
 format = 'using $symbol [${ram}( | ${swap})]($style) '
 symbol = "󰍛"
 threshold = 75 # Set to -1 to always show.
