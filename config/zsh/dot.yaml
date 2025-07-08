@@ -1,5 +1,6 @@
 darwin|linux:
   links:
+    .zshenv: ~/.zshenv
     .zshrc: ~/.zshrc
     completion.zsh: ~/.config/zsh/completion.zsh
     directories.zsh: ~/.config/zsh/directories.zsh
