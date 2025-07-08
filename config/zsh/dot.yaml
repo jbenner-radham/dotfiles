@@ -1,4 +1,4 @@
-darwin|linux:
+global:
   links:
     .zshenv: ~/.zshenv
     .zshrc: ~/.zshrc
@@ -6,3 +6,11 @@ darwin|linux:
     directories.zsh: ~/.config/zsh/directories.zsh
     history.zsh: ~/.config/zsh/history.zsh
     key-bindings.zsh: ~/.config/zsh/key-bindings.zsh
+
+darwin:
+  links:
+    .zprofile.darwin: ~/.zprofile
+
+linux:
+  links:
+    .zprofile.linux: ~/.zprofile
