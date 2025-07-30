@@ -139,6 +139,10 @@ read_only = " 󰌾"
 # "Music" = " "
 # "Pictures" = " "
 
+[direnv]
+detect_files = [".env"]
+disabled = false
+
 [docker_context]
 symbol = " "
 
