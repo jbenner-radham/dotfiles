@@ -1,14 +1,106 @@
-#!/usr/bin/env sh
+#!/usr/bin/env zsh
+
+# Open the homepage of a Homebrew formula or cask.
+#
+# Arguments:
+#   Name of formula or cask.
+#
+# Usage:
+#   brew-page <FORMULA|CASK>
+#
+# Examples:
+#   brew-page curl
+#   brew-page hello
+#   brew-page pnpm
+
+# Shellcheck lacks Zsh support. To get around this, we run it in Bash mode. This
+# way, we can still catch some errors, and a partial check is always better than
+# no check at all.
+# shellcheck shell=bash
+
 set -o errexit
+set -o noglob
+set -o nounset
+set -o pipefail
 
-brewpage () {
-    local opener='open'
+# Enable this to assist with debugging errors.
+# set -o xtrace
 
-    if [ "$(uname)" = 'Linux' ]; then
-        opener='xdg-open'
-    fi
+function main() {
+  local opener
+  local bold
+  local red
+  local reset
 
-    brew info "${1}" --json | jq --raw-output '.[0].homepage' | xargs "${opener}"
+  # Enable text styling only if the following conditions are met:
+  #   1. Standard output (file descriptor 1) is connected to the terminal.
+  #   2. `NO_COLOR` (https://no-color.org/) is unset or a zero-length string.
+  #   3. `TERM` is not set to "dumb".
+  if [[ -t 1 ]] && [[ -z "${NO_COLOR:-}" ]] && [[ "${TERM:-}" != 'dumb' ]]; then
+    bold="$(tput bold)"
+    red="$(tput setaf 1)"
+    reset="$(tput sgr0)"
+  fi
+
+  print_error() {
+    printf '%sError:%s %s\n' "${red}" "${reset}" "${@}" >&2
+  }
+
+  if [[ "${#}" -eq 0 ]]; then
+    print_error 'A formula or cask argument is required.'
+    exit 1
+  fi
+
+  # Since Shellcheck doesn't support Zsh it doesn't recognize `$+commands`.
+  # shellcheck disable=SC2154
+  if (( ! $+commands[brew] )); then
+    print_error "The required ${bold}brew${reset} command was not found."
+    exit 1
+  fi
+
+  # Since Shellcheck doesn't support Zsh it doesn't recognize `$+commands`.
+  # shellcheck disable=SC2154
+  if (( ! $+commands[jq] )); then
+    print_error "The required ${bold}jq${reset} command was not found."
+    exit 1
+  fi
+
+  # Since Shellcheck doesn't support Zsh it doesn't recognize `$+commands`.
+  # shellcheck disable=SC2154
+  if [[ "$(uname)" = 'Darwin' ]] && (( $+commands[open] )); then
+    opener='open'
+  elif [[ "$(uname)" = 'Linux' ]] && (( $+commands[xdg-open] )); then
+    opener='xdg-open'
+  fi
+
+  if [[ -z "${opener}" ]]; then
+    print_error 'Cannot determine the command to open a webpage.'
+    exit 1
+  fi
+
+  local casks_length
+  local filter
+  local formulae_length
+  local -r json="$(brew info --json=v2 "${@}")"
+
+  # We use `printf` instead of `echo` here because the output from `echo` can
+  # result in parse errors for `jq` (e.g., when querying pnpm).
+  casks_length="$(printf '%s' "${json}" | jq '.casks | length')"
+  formulae_length="$(printf '%s' "${json}" | jq '.formulae | length')"
+
+  # Cast our lengths to numbers. Empty strings become 0 when cast.
+  if [[ $((casks_length)) -gt 0 ]]; then
+    filter='.casks[0].homepage'
+  elif [[ $((formulae_length)) -gt 0 ]]; then
+    filter='.formulae[0].homepage'
+  fi
+
+  if [[ -z "${filter}" ]]; then
+    print_error 'Cannot determine the package homepage.'
+    exit 1
+  fi
+
+  printf '%s' "${json}" | jq --raw-output "${filter}" | xargs "${opener}"
 }
 
-brewpage "$@"
+main "${@}"
