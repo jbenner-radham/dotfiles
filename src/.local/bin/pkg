@@ -1,12 +1,63 @@
-#!/usr/bin/env sh
+#!/usr/bin/env zsh
+
+# Query and/or pretty print a package.json file with jq.
+#
+# Arguments:
+#   A jq filter sans the dot prefix (optional).
+#
+# Usage:
+#   pkg [FILTER]
+#
+# Examples:
+#   pkg
+#   pkg scripts
+#   pkg 'scripts["hyphenated-script-name"]'
+
+# Shellcheck lacks Zsh support. To get around this, we run it in Bash mode. This
+# way, we can still catch some errors, and a partial check is always better than
+# no check at all.
+# shellcheck shell=bash
+
 set -o errexit
+set -o noglob
+set -o nounset
+set -o pipefail
 
-pkg () {
-    local filter=''
+# Enable this to assist with debugging errors.
+# set -o xtrace
 
-    if [ "${1}" ]; then filter="${1}"; fi
+function main() {
+  local bold
+  local red
+  local reset
 
-    jq ."${filter}" package.json
+  # Enable text styling only if the following conditions are met:
+  #   1. Standard output (file descriptor 1) is connected to the terminal.
+  #   2. `NO_COLOR` (https://no-color.org/) is unset or a zero-length string.
+  #   3. `TERM` is not set to "dumb".
+  if [[ -t 1 ]] && [[ -z "${NO_COLOR:-}" ]] && [[ "${TERM:-}" != 'dumb' ]]; then
+    bold="$(tput bold)"
+    red="$(tput setaf 1)"
+    reset="$(tput sgr0)"
+  fi
+
+  print_error() {
+    printf '%sError:%s %s\n' "${red}" "${reset}" "${@}" >&2
+  }
+
+  # Since Shellcheck doesn't support Zsh it doesn't recognize `$+commands`.
+  # shellcheck disable=SC2154
+  if (( ! $+commands[jq] )); then
+    print_error "The required ${bold}jq${reset} command was not found."
+    exit 1
+  fi
+
+  if [[ ! -f package.json ]]; then
+    print_error "No ${bold}package.json${reset} file found."
+    exit 1
+  fi
+
+  jq ".${*}" package.json
 }
 
-pkg "$@"
+main "${@}"
