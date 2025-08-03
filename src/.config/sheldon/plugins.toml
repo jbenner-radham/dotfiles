@@ -61,6 +61,8 @@ use = ["{{ name }}.zsh"]
 apply = ["defer"]
 
 [plugins.zsh-history-substring-search.hooks]
+# The zsh key-bindings script has to be loaded before this on macOS or else
+# $terminfo won't be valid.
 post = '''
   bindkey "${terminfo[kcuu1]}" history-substring-search-up
   bindkey "${terminfo[kcud1]}" history-substring-search-down'''
