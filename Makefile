@@ -3,6 +3,6 @@
 default: lint
 
 lint:
-	@shellcheck .local/bin/*
+	@shellcheck src/.local/bin/*
 
 .PHONY: lint
