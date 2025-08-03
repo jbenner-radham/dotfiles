@@ -61,9 +61,23 @@ use = ["{{ name }}.zsh"]
 apply = ["defer"]
 
 [plugins.zsh-history-substring-search.hooks]
-# The zsh key-bindings script has to be loaded before this on macOS or else
-# $terminfo won't be valid.
 post = '''
+  # Make sure that the terminal is in application mode when zle is active, since
+  # only then are values from $terminfo valid.
+  # From: https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/key-bindings.zsh
+  if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
+    function zle-line-init() {
+      echoti smkx
+    }
+
+    function zle-line-finish() {
+      echoti rmkx
+    }
+
+    zle -N zle-line-init
+    zle -N zle-line-finish
+  fi
+
   bindkey "${terminfo[kcuu1]}" history-substring-search-up
   bindkey "${terminfo[kcud1]}" history-substring-search-down'''
 
