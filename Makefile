@@ -2,7 +2,10 @@
 
 default: lint
 
-lint:
-	@shellcheck src/.local/bin/*
+install:
+	@rsync --mkpath --recursive --times --verbose src/home/ "${HOME}"
 
-.PHONY: lint
+lint:
+	@shellcheck src/home/.local/bin/*
+
+.PHONY: install lint
