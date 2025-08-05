@@ -5,7 +5,7 @@ unsetopt SHORT_LOOPS # Short loops limit the parser's ability to detect errors.
 local -r local_bin_dir="${HOME}/.local/bin"
 
 if (( ! $path[(Ie)$local_bin_dir] )) && [[ -d "${local_bin_dir}" ]]; then
-  # Since $path is being used as an array-like here don't quote it!
+  # Since `$path` is being used as an array-like here don't quote it.
   path=("${local_bin_dir}" $path)
   export PATH
 fi
