@@ -16,8 +16,9 @@ fi
 #     error raised when no files match the current pattern.
 #  r: Match only owner-readable files.
 # See: <https://zsh.sourceforge.io/Doc/Release/Expansion.html#Glob-Qualifiers>
+# Note: The glob won't work if it's quoted.
 for file in $XDG_CONFIG_HOME/zsh/*.zsh(.Nr); do
-  source $file
+  source "${file}"
 done
 
 # Reference: <https://thevaluable.dev/zsh-completion-guide-examples/#enabling-the-zsh-completion-system>
