@@ -1,0 +1,148 @@
+tap "oven-sh/bun"
+tap "vet-run/vet"
+tap "volllly/tap"
+
+# Asciicast to GIF converter
+brew "agg"
+
+# Record and share terminal sessions
+brew "asciinema"
+
+# Aquarium animation in ASCII art
+brew "asciiquarium"
+
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+
+# Bash scripts that integrate bat with various command-line tools
+brew "bat-extras"
+
+# Load/unload environment variables based on $PWD
+brew "direnv"
+
+# Modern, maintained replacement for ls
+brew "eza"
+
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+
+# User-friendly command-line shell for UNIX-like operating systems
+brew "fish"
+
+# Distributed revision control system
+brew "git"
+
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
+
+# User-friendly cURL replacement (command-line HTTP client)
+brew "httpie"
+
+# Platform built on V8 to build network applications
+brew "node"
+
+# Swiss-army knife of markup format conversion
+brew "pandoc"
+
+# Fast, disk space efficient package manager
+brew "pnpm"
+
+# Interpreted, interactive, object-oriented programming language
+brew "python@3"
+
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+
+# Utility that provides fast incremental file transfer
+brew "rsync"
+
+# Fast, configurable, shell plugin manager
+brew "sheldon"
+
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
+
+# Autoformat shell script source code
+brew "shfmt"
+
+# Prints a steam locomotive if you type sl instead of ls
+brew "sl"
+
+# Human-friendly alternative to netstat for socket and port monitoring
+brew "somo"
+
+# Cross-shell prompt for astronauts
+brew "starship"
+
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
+
+# Your CLI home video recorder
+brew "vhs"
+
+# Internet file retriever
+brew "wget"
+
+# Successor of GNU Wget, a file and recursive website downloader
+brew "wget2"
+
+# Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
+brew "oven-sh/bun/bun"
+
+# Command-line tool that acts as a safety net for the risky curl | bash pattern
+brew "vet-run/vet/vet-run"
+
+# Fully cross platform dotfile manager and dev environment bootstrapper
+brew "volllly/tap/rotz"
+
+# See: https://rubydoc.brew.sh/OS.html
+if OS.linux?
+  # ...
+elsif OS.mac?
+  # Casks are only supported on macOS
+
+  # Web browser
+  cask "firefox"
+
+  # Monospaced font with programming ligatures, patched with glyphs
+  cask "font-fira-code-nerd-font"
+
+  # A typeface for developers, patched with glyphs
+  cask "font-jetbrains-mono-nerd-font"
+
+  # Tool to optimize images to a smaller size
+  cask "imageoptim"
+
+  # Terminal emulator as alternative to Apple's Terminal app
+  cask "iterm2"
+
+  # JetBrains tools manager
+  cask "jetbrains-toolbox"
+
+  # Get up and running with large language models locally
+  cask "ollama-app"
+
+  # Virtual machines UI using QEMU
+  cask "utm"
+
+  # Open-source code editor
+  cask "visual-studio-code"
+
+  # Video communication and virtual meeting platform
+  cask "zoom"
+
+  # VS Code extensions
+  vscode "bierner.github-markdown-preview"
+  vscode "bierner.markdown-checkbox"
+  vscode "bierner.markdown-emoji"
+  vscode "bierner.markdown-footnotes"
+  vscode "bierner.markdown-mermaid"
+  vscode "bierner.markdown-preview-github-styles"
+  vscode "bierner.markdown-yaml-preamble"
+  vscode "editorconfig.editorconfig"
+  vscode "ms-vscode.makefile-tools"
+  vscode "streetsidesoftware.code-spell-checker"
+  vscode "tamasfe.even-better-toml"
+  vscode "timonwong.shellcheck"
+  vscode "xadillax.viml"
+end
