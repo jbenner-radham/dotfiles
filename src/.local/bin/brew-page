@@ -33,9 +33,9 @@ function main() {
   local reset
 
   # Enable text styling only if the following conditions are met:
-  #   1. Standard output (file descriptor 1) is connected to the terminal.
-  #   2. `NO_COLOR` (https://no-color.org/) is unset or a zero-length string.
-  #   3. `TERM` is not set to "dumb".
+  #  1. Standard output (file descriptor 1) is connected to the terminal.
+  #  2. `NO_COLOR` (https://no-color.org/) is unset or a zero-length string.
+  #  3. `TERM` is not set to "dumb".
   if [[ -t 1 ]] && [[ -z "${NO_COLOR:-}" ]] && [[ "${TERM:-}" != 'dumb' ]]; then
     bold="$(tput bold)"
     red="$(tput setaf 1)"
