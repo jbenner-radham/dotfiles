@@ -96,11 +96,18 @@ function main() {
   fi
 
   if [[ -z "${filter}" ]]; then
-    print_error 'Cannot determine the package homepage.'
+    print_error 'Cannot determine a filter to lookup the package homepage.'
     exit 1
   fi
 
-  printf '%s' "${json}" | jq --raw-output "${filter}" | xargs "${opener}"
+  local -r url="$(printf '%s' "${json}" | jq --raw-output "${filter}")"
+
+  if [[ -z "${url}" ]]; then
+    print_error 'Cannot retrieve the package homepage URL.'
+    exit 1
+  fi
+
+  printf '%s' "${url}" | xargs "${opener}"
 }
 
 main "${@}"
