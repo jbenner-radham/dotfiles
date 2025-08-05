@@ -66,13 +66,8 @@ post = '''
   # only then are values from $terminfo valid.
   # From: https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/key-bindings.zsh
   if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
-    function zle-line-init() {
-      echoti smkx
-    }
-
-    function zle-line-finish() {
-      echoti rmkx
-    }
+    function zle-line-init() { echoti smkx }
+    function zle-line-finish() { echoti rmkx }
 
     zle -N zle-line-init
     zle -N zle-line-finish
