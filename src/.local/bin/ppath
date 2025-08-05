@@ -1,0 +1,45 @@
+#!/usr/bin/env zsh
+
+# Pretty-print the path, with each component on a separate line.
+#
+# Arguments:
+#   n/a
+#
+# Usage:
+#   ppath
+#
+# Examples:
+#   ppath
+
+# Shellcheck lacks Zsh support. To get around this, we run it in Bash mode. This
+# way, we can still catch some errors, and a partial check is always better than
+# no check at all.
+# shellcheck shell=bash
+
+set -o errexit
+set -o noglob
+set -o nounset
+set -o pipefail
+
+# Enable this to assist with debugging errors.
+# set -o xtrace
+
+function main() {
+    # We do a Shellcheck disable here because:
+    #  1. Our variable is an array-like and wouldn't work if quoted.
+    #  2. The `$path` variable is always set by Zsh.
+    # shellcheck disable=SC2086,SC2154
+    print -l ${path}
+
+    # Alternative implementations:
+
+    # A traditional for loop over the `$path` array-like.
+    # for component in ${path:-}; do
+    #   printf '%s\n' "${component}"
+    # done
+
+    # A parameter expansion flag to split (`s`) on the delimiter (`[:]`).
+    # print -l "${(s[:])PATH}"
+}
+
+main
