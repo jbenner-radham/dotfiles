@@ -88,10 +88,10 @@ function main() {
   casks_length="$(printf '%s' "${json}" | jq '.casks | length')"
   formulae_length="$(printf '%s' "${json}" | jq '.formulae | length')"
 
-  # Cast our lengths to numbers. Empty strings become 0 when cast.
-  if [[ $((casks_length)) -gt 0 ]]; then
+  # Use arithmetic evaluation to check lengths. Empty strings are cast to 0.
+  if (( casks_length > 0 )); then
     filter='.casks[0].homepage'
-  elif [[ $((formulae_length)) -gt 0 ]]; then
+  elif (( formulae_length > 0 )); then
     filter='.formulae[0].homepage'
   fi
 
