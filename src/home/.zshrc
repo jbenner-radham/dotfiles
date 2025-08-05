@@ -10,8 +10,13 @@ if (( ! $path[(Ie)$local_bin_dir] )) && [[ -d "${local_bin_dir}" ]]; then
   export PATH
 fi
 
-# Reference: <https://stackoverflow.com/questions/28599346/how-to-loop-through-all-the-files-located-under-a-certain-path-in-zsh#answer-28604257>
-for file in $XDG_CONFIG_HOME/zsh/*.zsh(N.); do
+# The parenthesized characters are called glob qualifiers and do the following:
+#  .: Match only plain files.
+#  N: Set the `NULL_GLOB` option for the current pattern. This will suppress the
+#     error raised when no files match the current pattern.
+#  r: Match only owner-readable files.
+# See: <https://zsh.sourceforge.io/Doc/Release/Expansion.html#Glob-Qualifiers>
+for file in $XDG_CONFIG_HOME/zsh/*.zsh(.Nr); do
   source $file
 done
 
