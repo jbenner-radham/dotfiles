@@ -34,7 +34,7 @@ function main() {
     # Alternative implementations:
 
     # A traditional for loop over the `$path` array-like.
-    # for component in ${path:-}; do
+    # for component in ${path}; do
     #   printf '%s\n' "${component}"
     # done
 
