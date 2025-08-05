@@ -7,11 +7,11 @@ WORDCHARS=''
 # Input/Output Options <https://zsh.sourceforge.io/Doc/Release/Options.html#Input_002fOutput>
 unsetopt FLOW_CONTROL    # If this option is unset, output flow control via start/stop characters is disabled in the shell’s editor.
 
-# Completion Options <https://zsh.sourceforge.io/Doc/Release/Options.html#Completion-4> 
+# Completion Options <https://zsh.sourceforge.io/Doc/Release/Options.html#Completion-4>
 unsetopt MENU_COMPLETE   # Do not autoselect the first completion entry.
 setopt ALWAYS_TO_END     # If a completion is performed with the cursor within a word, and a full completion is inserted, the cursor is moved to the end of the word.
 setopt AUTO_MENU         # Show completion menu on successive tab press.
-setopt COMPLETE_IN_WORD  # If unset, the cursor is set to the end of the word if completion is started. Otherwise it stays there and completion is done from both ends. 
+setopt COMPLETE_IN_WORD  # If unset, the cursor is set to the end of the word if completion is started. Otherwise it stays there and completion is done from both ends.
 
 # Should this be in keybindings?
 bindkey -M menuselect '^o' accept-and-infer-next-history
