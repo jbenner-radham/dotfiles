@@ -25,6 +25,12 @@ done
 autoload -Uz compinit && compinit
 
 # Setup
-eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 eval "$(sheldon source)"
+
+# Initialize Starship only if the following conditions are met:
+#  1. Standard output (file descriptor 1) is connected to the terminal.
+#  2. `TERM` is not set to "dumb".
+if [[ -t 1 ]] && [[ "${TERM}" != 'dumb' ]]; then
+  eval "$(starship init zsh)"
+fi
