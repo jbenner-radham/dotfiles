@@ -3,16 +3,14 @@
 # Note: This needs to be at the top of the file.
 # zmodload zsh/zprof
 
-# Input/Output Options <https://zsh.sourceforge.io/Doc/Release/Options.html#Input_002fOutput>
+# Input/Output Options
+# See: <https://zsh.sourceforge.io/Doc/Release/Options.html#Input_002fOutput>
 unsetopt SHORT_LOOPS # Short loops limit the parser's ability to detect errors.
 
-# See: https://www.freedesktop.org/software/systemd/man/latest/file-hierarchy.html#Home%20Directory
-local -r local_bin_dir="${HOME}/.local/bin"
-
-if (( ! $path[(Ie)$local_bin_dir] )) && [[ -d "${local_bin_dir}" ]]; then
-  # Since `$path` is being used as an array-like here don't quote it.
-  path=("${local_bin_dir}" $path)
-  export PATH
+# Ensure the XDG runtime directory exists and has the appropriate permissions.
+if [[ -n "${XDG_RUNTIME_DIR}" ]]; then
+  mkdir -p "${XDG_RUNTIME_DIR}"
+  chmod 700 "${XDG_RUNTIME_DIR}"
 fi
 
 # The parenthesized characters are called glob qualifiers and do the following:
