@@ -7,6 +7,13 @@
 # See: <https://zsh.sourceforge.io/Doc/Release/Options.html#Input_002fOutput>
 unsetopt SHORT_LOOPS # Short loops limit the parser's ability to detect errors.
 
+# Since `.zprofile` doesn't appear to be loaded on Ubuntu init Homebrew here.
+if [[ "$(uname)" = 'Linux' ]] &&
+  [[ -x '/home/linuxbrew/.linuxbrew/bin/brew' ]]
+then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 # Ensure the XDG runtime directory exists and has the appropriate permissions.
 if [[ -n "${XDG_RUNTIME_DIR}" ]]; then
   mkdir -p "${XDG_RUNTIME_DIR}"

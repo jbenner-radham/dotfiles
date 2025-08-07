@@ -23,6 +23,7 @@ export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
 
 # Add items to the path.
 [[ -d "${HOME}/.local/bin" ]] && path=("${HOME}/.local/bin" $path)
-[[ -d "${HOME}/Library/Application Support/JetBrains/Toolbox/scripts" ]] && \
+[[ $(uname) = 'Darwin' ]] &&
+  [[ -d "${HOME}/Library/Application Support/JetBrains/Toolbox/scripts" ]] &&
   path+=("${HOME}/Library/Application Support/JetBrains/Toolbox/scripts")
 export PATH
