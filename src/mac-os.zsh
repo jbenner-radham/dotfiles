@@ -5,7 +5,22 @@
 #  - https://gitlab.com/dnsmichi/dotfiles/-/blob/main/.macos
 #  - https://medium.com/@laclementine/dotfile-for-mac-efe082ad0d6a
 
-# View settings with `defaults read`
+# You can view the current settings with `defaults read`.
+
+print '\nThis script will apply system settings and as a precaution will' \
+  'close "System Settings" if it is open.\n'
+
+if ! read -q '_input?Do you wish to proceed? Press (Y/y) to continue: '; then
+  print
+  exit
+fi
+
+print
+
+# Close any open System Setting panes, to prevent them from overriding settings
+# we’re about to change. We could use `killall`, but it returns 1 if no
+# instances are open.
+osascript -e 'tell application "System Settings" to quit'
 
 ###############################################################################
 # Menu Bar                                                                    #
@@ -135,7 +150,7 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 # defaults write com.apple.finder ShowStatusBar -bool true
 
 # Show path bar
-# defaults write com.apple.finder ShowPathbar -bool true
+defaults write com.apple.finder ShowPathbar -bool true
 
 # Display full POSIX path as Finder window title
 # defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
@@ -243,4 +258,34 @@ defaults write com.apple.dock show-recents -bool false
 # Tell iTerm2 to use the custom preferences in the directory
 # defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 
-printf 'Settings applied. You may need to restart your system.\n'
+# Don’t display a confirmation prompt when quitting iTerm
+# defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+
+###############################################################################
+# Kill affected applications                                                  #
+###############################################################################
+
+print '\nAll potentially affected applications are about to be killed.\n'
+
+if ! read -q '_input?Do you wish to proceed? Press (Y/y) to continue: '; then
+  print '\n\nSettings applied. You may need to restart your system for all of' \
+    'them to take affect.'
+  exit
+fi
+
+for process in 'cfprefsd' 'SystemUIServer'; do
+  killall "${process}"
+done
+
+for app in 'Dock' 'Finder' 'Safari'; do
+  osascript -e "tell application \"${app}\" to quit"
+done
+
+# if [[ "${TERM_PROGRAM}" = 'iTerm.app' ]]; then
+#   print 'You may have to restart iTerm to apply any setting changes.'
+# else
+#   osascript -e 'tell application "iTerm2" to quit'
+# fi
+
+print '\n\nSettings applied. A system restart may be required for them' \
+  'to take affect.'
