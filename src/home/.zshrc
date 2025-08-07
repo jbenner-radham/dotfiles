@@ -1,3 +1,8 @@
+# Uncomment this and the `zprof` invocation at the bottom of this file to enable
+# profiling.
+# Note: This needs to be at the top of the file.
+# zmodload zsh/zprof
+
 # Input/Output Options <https://zsh.sourceforge.io/Doc/Release/Options.html#Input_002fOutput>
 unsetopt SHORT_LOOPS # Short loops limit the parser's ability to detect errors.
 
@@ -31,3 +36,8 @@ autoload -Uz compinit && compinit
 
 # A Little Fun
 (( $+commands[cowsay] )) && (( $+commands[fortune] )) && cowsay "$(fortune)"
+
+# Uncomment this and the `zmodload zsh/zprof` invocation at the top of this file
+# to enable profiling.
+# Note: This needs to be at the bottom of the file.
+# zprof
