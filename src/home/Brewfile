@@ -17,6 +17,9 @@ brew "bat"
 # Bash scripts that integrate bat with various command-line tools
 brew "bat-extras"
 
+# Apjanke's fork of the classic cowsay project
+brew "cowsay"
+
 # Load/unload environment variables based on $PWD
 brew "direnv"
 
@@ -28,6 +31,9 @@ brew "fd"
 
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
+
+# Infamous electronic fortune-cookie generator
+brew "fortune"
 
 # Distributed revision control system
 brew "git"
@@ -101,6 +107,9 @@ if OS.linux?
 elsif OS.mac?
   # Casks are only supported on macOS
 
+  # Utilities designed to make common development tasks easier
+  cask "devtoys"
+
   # Web browser
   cask "firefox"
 
@@ -140,6 +149,7 @@ elsif OS.mac?
   vscode "bierner.markdown-preview-github-styles"
   vscode "bierner.markdown-yaml-preamble"
   vscode "editorconfig.editorconfig"
+  vscode "harrydowning.yaml-embedded-languages"
   vscode "ms-vscode.makefile-tools"
   vscode "streetsidesoftware.code-spell-checker"
   vscode "tamasfe.even-better-toml"
