@@ -1,6 +1,4 @@
-local -r history_file="${XDG_DATA_HOME}/zsh/history"
-
-[[ -w "${history_file}" ]] && HISTFILE="${history_file}"
+[[ -z "${HISTFILE}" ]] && HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
 (( HISTSIZE < 50000 )) && HISTSIZE=50000
 (( SAVEHIST < 10000 )) && SAVEHIST=10000
 
