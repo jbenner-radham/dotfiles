@@ -1,3 +1,7 @@
+" Enable filetype plugins.
+filetype plugin on
+filetype indent on
+
 " Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
 
@@ -8,4 +12,4 @@ syntax on
 set number
 
 " Enable backspace in insert mode on macOS.
-set backspace=indent,eol,start
+" set backspace=indent,eol,start
