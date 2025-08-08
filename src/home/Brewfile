@@ -80,6 +80,9 @@ brew "somo"
 # Cross-shell prompt for astronauts
 brew "starship"
 
+# CLI to perform various operations on string
+brew "sttr"
+
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
 
@@ -106,9 +109,6 @@ if OS.linux?
   # ...
 elsif OS.mac?
   # Casks are only supported on macOS
-
-  # Utilities designed to make common development tasks easier
-  cask "devtoys"
 
   # Web browser
   cask "firefox"
