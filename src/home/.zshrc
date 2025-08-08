@@ -42,6 +42,9 @@ unset file
 # A Little Fun
 (( $+commands[cowsay] )) && (( $+commands[fortune] )) && cowsay "$(fortune)"
 
+# See: <https://thevaluable.dev/zsh-completion-guide-examples/#enabling-the-zsh-completion-system>
+autoload -Uz compinit && compinit
+
 # Uncomment this and the `zmodload zsh/zprof` invocation at the top of this file
 # to enable profiling.
 # Note: This needs to be at the bottom of the file.
