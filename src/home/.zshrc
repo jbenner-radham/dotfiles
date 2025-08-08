@@ -34,7 +34,7 @@ done
 # Unset our loop variable so it doesn't persist in our shell session.
 unset file
 
-# Setup
+# Setup Integrations
 (( $+commands[direnv] )) && eval "$(direnv hook zsh)"
 (( $+commands[sheldon] )) && eval "$(sheldon source)"
 (( $+commands[starship] )) && eval "$(starship init zsh)"
