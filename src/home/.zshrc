@@ -31,8 +31,8 @@ for file in $XDG_CONFIG_HOME/zsh/*.zsh(.Nr); do
   source "${file}"
 done
 
-# Reference: <https://thevaluable.dev/zsh-completion-guide-examples/#enabling-the-zsh-completion-system>
-autoload -Uz compinit && compinit
+# Unset our loop variable so it doesn't persist in our shell session.
+unset file
 
 # Setup
 (( $+commands[direnv] )) && eval "$(direnv hook zsh)"
