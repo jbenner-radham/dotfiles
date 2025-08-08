@@ -1,7 +1,7 @@
-# Uncomment this and the `zprof` invocation at the bottom of this file to enable
-# profiling.
 # Note: This needs to be at the top of the file.
-# zmodload zsh/zprof
+if [[ "${ENABLE_ZSH_PROFILING}" = true ]]; then
+  zmodload zsh/zprof
+fi
 
 # Input/Output Options
 # See: <https://zsh.sourceforge.io/Doc/Release/Options.html#Input_002fOutput>
@@ -45,7 +45,7 @@ unset file
 # See: <https://thevaluable.dev/zsh-completion-guide-examples/#enabling-the-zsh-completion-system>
 autoload -Uz compinit && compinit
 
-# Uncomment this and the `zmodload zsh/zprof` invocation at the top of this file
-# to enable profiling.
 # Note: This needs to be at the bottom of the file.
-# zprof
+if [[ "${ENABLE_ZSH_PROFILING}" = true ]]; then
+  zprof
+fi

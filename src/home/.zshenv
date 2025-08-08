@@ -1,3 +1,6 @@
+# Enable profiling using `zprof`.
+# export ENABLE_ZSH_PROFILING=true
+
 # Used by Eza for time formatting.
 # See: https://docs.rs/chrono/latest/chrono/format/strftime/index.html
 export TIME_STYLE="+%b %d %Y %I:%M:%S%P"
