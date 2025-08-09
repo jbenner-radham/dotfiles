@@ -40,7 +40,12 @@ unset file
 (( $+commands[starship] )) && eval "$(starship init zsh)"
 
 # A Little Fun
-(( $+commands[cowsay] )) && (( $+commands[fortune] )) && cowsay "$(fortune)"
+if [[ "${ENABLE_COWSAY_GREETING}" = true ]] \
+  && (( $+commands[cowsay] )) \
+  && (( $+commands[fortune] ))
+then
+  cowsay "$(fortune)"
+fi
 
 # See: https://thevaluable.dev/zsh-completion-guide-examples/
 autoload -Uz compinit && compinit
