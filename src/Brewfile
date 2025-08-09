@@ -53,6 +53,9 @@ brew "pandoc"
 # Fast, disk space efficient package manager
 brew "pnpm"
 
+# Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
+brew "prettier"
+
 # Interpreted, interactive, object-oriented programming language
 brew "python@3"
 
@@ -94,6 +97,9 @@ brew "wget"
 
 # Successor of GNU Wget, a file and recursive website downloader
 brew "wget2"
+
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
+brew "yq"
 
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
