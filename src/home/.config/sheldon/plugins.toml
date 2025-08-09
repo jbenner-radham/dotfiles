@@ -27,6 +27,10 @@ github = "romkatv/zsh-defer"
 [plugins.auto-venv]
 github = "Skylor-Tang/auto-venv"
 
+[plugins.local]
+local = "~/.config/zsh"
+use = ["*.zsh"]
+
 [plugins.ohmyzsh]
 github = "ohmyzsh/ohmyzsh"
 dir = "lib"
