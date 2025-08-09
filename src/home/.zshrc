@@ -8,8 +8,8 @@ fi
 unsetopt SHORT_LOOPS # Short loops limit the parser's ability to detect errors.
 
 # Since `.zprofile` doesn't appear to be loaded on Ubuntu init Homebrew here.
-if [[ "${OSTYPE}" = linux* ]] &&
-  [[ -x '/home/linuxbrew/.linuxbrew/bin/brew' ]]
+if [[ "${OSTYPE}" = linux* ]] \
+  && [[ -x '/home/linuxbrew/.linuxbrew/bin/brew' ]]
 then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
@@ -35,9 +35,17 @@ done
 unset file
 
 # Setup Integrations
-(( $+commands[direnv] )) && eval "$(direnv hook zsh)"
-(( $+commands[sheldon] )) && eval "$(sheldon source)"
-(( $+commands[starship] )) && eval "$(starship init zsh)"
+if (( $+commands[direnv] )); then
+  eval "$(direnv hook zsh)"
+fi
+
+if (( $+commands[sheldon] )); then
+  eval "$(sheldon source)"
+fi
+
+if (( $+commands[starship] )); then
+  eval "$(starship init zsh)"
+fi
 
 # A Little Fun
 if [[ "${ENABLE_COWSAY_GREETING}" = true ]] \
@@ -47,6 +55,7 @@ then
   cowsay "$(fortune)"
 fi
 
+# Reinitialize Command Line Completion
 # See: https://thevaluable.dev/zsh-completion-guide-examples/
 autoload -Uz compinit && compinit
 
