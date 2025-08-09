@@ -7,16 +7,18 @@ export TIME_STYLE="+%b %d %Y %I:%M:%S%P"
 
 # Set the XDG Base Directory environment variables.
 # See: https://specifications.freedesktop.org/basedir-spec/latest/
-export XDG_CACHE_HOME="${HOME}/.cache"
-export XDG_CONFIG_HOME="${HOME}/.config"
-export XDG_DATA_HOME="${HOME}/.local/share"
-export XDG_STATE_HOME="${HOME}/.local/state"
+[[ -z "${XDG_CACHE_HOME}" ]] && export XDG_CACHE_HOME="${HOME}/.cache"
+[[ -z "${XDG_CONFIG_HOME}" ]] && export XDG_CONFIG_HOME="${HOME}/.config"
+[[ -z "${XDG_DATA_HOME}" ]] && export XDG_DATA_HOME="${HOME}/.local/share"
+[[ -z "${XDG_STATE_HOME}" ]] && export XDG_STATE_HOME="${HOME}/.local/state"
 
-if [[ $(uname) = 'Darwin' ]]; then
-  # `$TMPDIR` ends with a forward slash so we strip it off via `%/`.
-  export XDG_RUNTIME_DIR="${TMPDIR%/}/runtime-${UID}"
-elif [[ "$(uname)" = 'Linux' ]]; then
-  export XDG_RUNTIME_DIR="/run/user/$(id -u)"
+if [[ -z "${XDG_RUNTIME_DIR}" ]]; then
+  if [[ $(uname) = 'Darwin' ]]; then
+    # `$TMPDIR` ends with a forward slash so we strip it off via `%/`.
+    export XDG_RUNTIME_DIR="${TMPDIR%/}/runtime-${UID}"
+  elif [[ "$(uname)" = 'Linux' ]]; then
+    export XDG_RUNTIME_DIR="/run/user/$(id -u)"
+  fi
 fi
 
 # Set the Oh My Zsh cache directory. My completions script is sourced from
