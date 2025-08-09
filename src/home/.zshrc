@@ -8,7 +8,7 @@ fi
 unsetopt SHORT_LOOPS # Short loops limit the parser's ability to detect errors.
 
 # Since `.zprofile` doesn't appear to be loaded on Ubuntu init Homebrew here.
-if [[ "$(uname)" = 'Linux' ]] &&
+if [[ "${OSTYPE}" = linux* ]] &&
   [[ -x '/home/linuxbrew/.linuxbrew/bin/brew' ]]
 then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
