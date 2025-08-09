@@ -3,7 +3,8 @@
 default: lint
 
 install:
-	@rsync --mkpath --recursive --times --verbose src/home/ "${HOME}"
+	@rsync --exclude '.keep' --mkpath --recursive --times --verbose src/home/ \
+		"${HOME}"
 
 lint:
 	@shellcheck src/home/.local/bin/*
