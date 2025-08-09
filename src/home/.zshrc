@@ -4,7 +4,7 @@ if [[ "${ENABLE_ZSH_PROFILING}" = true ]]; then
 fi
 
 # Input/Output Options
-# See: <https://zsh.sourceforge.io/Doc/Release/Options.html#Input_002fOutput>
+# See: https://zsh.sourceforge.io/Doc/Release/Options.html#Input_002fOutput
 unsetopt SHORT_LOOPS # Short loops limit the parser's ability to detect errors.
 
 # Since `.zprofile` doesn't appear to be loaded on Ubuntu init Homebrew here.
@@ -25,7 +25,7 @@ fi
 #  N: Set the `NULL_GLOB` option for the current pattern. This will suppress the
 #     error raised when no files match the current pattern.
 #  r: Match only owner-readable files.
-# See: <https://zsh.sourceforge.io/Doc/Release/Expansion.html#Glob-Qualifiers>
+# See: https://zsh.sourceforge.io/Doc/Release/Expansion.html#Glob-Qualifiers
 # Note: The glob won't work if it's quoted.
 for file in $XDG_CONFIG_HOME/zsh/*.zsh(.Nr); do
   source "${file}"
@@ -42,7 +42,7 @@ unset file
 # A Little Fun
 (( $+commands[cowsay] )) && (( $+commands[fortune] )) && cowsay "$(fortune)"
 
-# See: <https://thevaluable.dev/zsh-completion-guide-examples/#enabling-the-zsh-completion-system>
+# See: https://thevaluable.dev/zsh-completion-guide-examples/
 autoload -Uz compinit && compinit
 
 # Note: This needs to be at the bottom of the file.
