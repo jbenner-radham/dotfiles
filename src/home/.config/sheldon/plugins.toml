@@ -44,6 +44,7 @@ post = """
 [plugins.zsh-autopair]
 github = "hlissner/zsh-autopair"
 use = ["autopair.zsh"]
+apply = ["defer"]
 
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
