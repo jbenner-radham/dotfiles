@@ -19,8 +19,12 @@
         "hlissner",
         "imageoptim",
         "iterm",
+        "kcbt",
         "kcud1",
         "kcuu1",
+        "kdch1",
+        "kend",
+        "khome",
         "killall",
         "linuxbrew",
         "mkpath",
@@ -48,6 +52,8 @@
         "terminfo",
         "unfunction",
         "venv",
+        "vicmd",
+        "viins",
         "zmodload",
         "zprof"
     ]
