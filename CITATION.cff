@@ -1,0 +1,23 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Dotfiles
+message: >-
+  To cite this software, please use the metadata in the this
+  file.
+type: software
+authors:
+  - given-names: James
+    family-names: Benner
+    email: hello@jamesbenner.com
+    orcid: 'https://orcid.org/0009-0006-3958-7234'
+identifiers:
+  - type: url
+    value: 'https://github.com/jbenner-radham/dotfiles/'
+    description: Dotfiles
+repository-code: 'https://github.com/jbenner-radham/dotfiles/'
+abstract: >-
+  Dotfiles, setup scripts, and utilities for macOS and
+  Ubuntu.
+license: MIT
