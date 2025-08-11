@@ -11,6 +11,6 @@ if [ "$(uname)" = 'Linux' ] && [ "$(basename "${SHELL}")" != 'zsh' ]; then
   exit
 fi
 
-if [ "$(uname)" = 'Linux' ] && [ "$(basename "${SHELL}")" = 'zsh' ]; then
-  sudo apt install --assume-yes jq rsync vim
-fi
+# if [ "$(uname)" = 'Linux' ] && [ "$(basename "${SHELL}")" = 'zsh' ]; then
+#   sudo apt install --assume-yes jq rsync vim
+# fi
