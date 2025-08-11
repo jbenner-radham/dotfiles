@@ -51,4 +51,7 @@ then
   path+=("${HOME}/Library/Application Support/JetBrains/Toolbox/scripts")
 fi
 
+# Define path to `Brewfile` for Homebrew.
+export HOMEBREW_BUNDLE_FILE="${XDG_CONFIG_HOME}/homebrew/Brewfile"
+
 export PATH
