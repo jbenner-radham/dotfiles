@@ -6,6 +6,12 @@ My personal collection of dotfiles for macOS & Ubuntu.
 Install
 =======
 
+Configure system settings (macOS):
+
+```shell
+./src/mac-os.zsh
+```
+
 Install prerequisites (currently just for Ubuntu):
 
 ```shell
