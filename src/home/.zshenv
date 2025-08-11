@@ -45,29 +45,10 @@ fi
 # See: https://github.com/ohmyzsh/ohmyzsh/wiki/Settings#zsh_cache_dir
 export ZSH_CACHE_DIR="${XDG_CACHE_HOME}/zsh"
 
-# Add items to the path.
-if [[ -d "${HOME}/.local/bin" ]]; then
-  path=("${HOME}/.local/bin" $path)
-fi
-
-if [[ "${OSTYPE}" == darwin* ]] \
-  && [[ -d "${HOME}/Library/Application Support/JetBrains/Toolbox/scripts" ]]
-then
-  path+=("${HOME}/Library/Application Support/JetBrains/Toolbox/scripts")
-fi
-
-export PATH
-
 # Define path to `Brewfile` for Homebrew.
 export HOMEBREW_BUNDLE_FILE="${XDG_CONFIG_HOME}/homebrew/Brewfile"
 
 # Set the preferred editor(s).
 export EDITOR='vim'
 
-# For some reason on macOS the Homebrew paths aren't available in the path yet
-# so we can't use `$+commands[code]` to look for the VS Code launcher.
-if [[ -z "${SSH_CONNECTION}" ]] && [[ -x /opt/homebrew/bin/code ]]; then
-  export VISUAL='code --wait'
-else
-  export VISUAL="${EDITOR}"
-fi
+# Note: Some additional environment variables are set in `.zshrc`.

@@ -3,6 +3,30 @@ if [[ "${ENABLE_ZSH_PROFILING}" = true ]]; then
   zmodload zsh/zprof
 fi
 
+# Set additional environment variables which can't be set in `.zshenv` because
+# they depend on the Homebrew environment, which is initialized in `.zprofile`,
+# which is loaded after `.zshenv`.
+
+# Add items to the path.
+if [[ -d "${HOME}/.local/bin" ]]; then
+  path=("${HOME}/.local/bin" $path)
+fi
+
+if [[ "${OSTYPE}" == darwin* ]] \
+  && [[ -d "${HOME}/Library/Application Support/JetBrains/Toolbox/scripts" ]]
+then
+  path+=("${HOME}/Library/Application Support/JetBrains/Toolbox/scripts")
+fi
+
+export PATH
+
+# Set the appropriate visual editor.
+if [[ -z "${SSH_CONNECTION}" ]] && (( $+commands[code] )); then
+  export VISUAL='code --wait'
+else
+  export VISUAL="${EDITOR}"
+fi
+
 # Input/Output Options
 # See: https://zsh.sourceforge.io/Doc/Release/Options.html#Input_002fOutput
 unsetopt SHORT_LOOPS # Short loops limit the parser's ability to detect errors.
