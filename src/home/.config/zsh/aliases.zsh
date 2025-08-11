@@ -12,6 +12,11 @@ else
   alias ls='ls --color=auto'
 fi
 
+# Pretty Bat (from bat-extras)
+if (( $+commands[prettybat] )); then
+  alias pbat='prettybat'
+fi
+
 # Pretty Print Environment Variables
 alias penv='print -ol $(env)'
 
