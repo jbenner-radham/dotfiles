@@ -8,6 +8,11 @@ export ENABLE_COWSAY_GREETING=true
 # See: https://docs.rs/chrono/latest/chrono/format/strftime/index.html
 export TIME_STYLE="+%b %d %Y %I:%M:%S%P"
 
+# Set the language.
+if [[ -z "${LANG}" ]]; then
+  export LANG='en_US.UTF-8'
+fi
+
 # Set the XDG Base Directory environment variables.
 # See: https://specifications.freedesktop.org/basedir-spec/latest/
 if [[ -z "${XDG_CACHE_HOME}" ]]; then
@@ -51,7 +56,18 @@ then
   path+=("${HOME}/Library/Application Support/JetBrains/Toolbox/scripts")
 fi
 
+export PATH
+
 # Define path to `Brewfile` for Homebrew.
 export HOMEBREW_BUNDLE_FILE="${XDG_CONFIG_HOME}/homebrew/Brewfile"
 
-export PATH
+# Set the preferred editor(s).
+export EDITOR='vim'
+
+# For some reason on macOS the Homebrew paths aren't available in the path yet
+# so we can't use `$+commands[code]` to look for the VS Code launcher.
+if [[ -z "${SSH_CONNECTION}" ]] && [[ -x /opt/homebrew/bin/code ]]; then
+  export VISUAL='code --wait'
+else
+  export VISUAL="${EDITOR}"
+fi
