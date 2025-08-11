@@ -51,8 +51,8 @@ Environment
 - Plugins are managed via [Sheldon](https://sheldon.cli.rs/).
 - The prompt utilized is [Starship](https://starship.rs/).
 - The following config files are utilized (in order of load):
-    1. `~/.zprofile` (not loaded on Ubuntu)
-    2. `~/.zshenv`
+    1. `~/.zshenv`
+    2. `~/.zprofile` (not loaded on Ubuntu)
     3. `~/.zshrc`
     4. `~/.config/zsh/*.zsh`
 
