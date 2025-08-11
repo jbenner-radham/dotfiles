@@ -3,7 +3,7 @@
 if [ "$(uname)" = 'Linux' ] && [ "$(basename "${SHELL}")" != 'zsh' ]; then
   sudo apt install --assume-yes build-essential curl git zsh
   chsh -s "$(which zsh)"
-  printf 'Restart and re-run this script to continue.\n'
+  printf 'Restart the system and re-run this script to continue.\n'
   exit
 fi
 
