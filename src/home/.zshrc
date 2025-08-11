@@ -27,8 +27,24 @@ else
   export VISUAL="${EDITOR}"
 fi
 
+# Set the preferred pager.
+if (( $+commands[bat] )); then
+  export PAGER='bat'
+else
+  export PAGER='less'
+fi
+
+# Expansion and Globbing Options
+# See: https://zsh.sourceforge.io/Doc/Release/Options.html#Expansion-and-Globbing
+
+# Print a warning message when a global parameter is created in a function by an
+# assignment or in math context.
+setopt WARN_CREATE_GLOBAL
+
 # Input/Output Options
 # See: https://zsh.sourceforge.io/Doc/Release/Options.html#Input_002fOutput
+
+# Disallow the short forms of for, repeat, select, if, and function constructs.
 unsetopt SHORT_LOOPS # Short loops limit the parser's ability to detect errors.
 
 # Since `.zprofile` doesn't appear to be loaded on Ubuntu init Homebrew here.
