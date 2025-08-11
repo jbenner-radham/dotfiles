@@ -94,5 +94,5 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
 
-# [Esc + M] - Duplicate previous "word".
+# [Esc + M] - Duplicate previous word.
 bindkey "^[m" copy-prev-shell-word
