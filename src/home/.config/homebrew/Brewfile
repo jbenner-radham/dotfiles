@@ -44,6 +44,9 @@ brew "go"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+
 # Platform built on V8 to build network applications
 brew "node"
 
@@ -125,6 +128,9 @@ elsif OS.mac?
   # A typeface for developers, patched with glyphs
   cask "font-jetbrains-mono-nerd-font"
 
+  # Open source monospace font
+  cask "font-maple-mono"
+
   # Tool to optimize images to a smaller size
   cask "imageoptim"
 
@@ -136,6 +142,9 @@ elsif OS.mac?
 
   # Get up and running with large language models locally
   cask "ollama-app"
+
+  # Verify system files structure, run miscellaneous maintenance and more
+  cask "onyx"
 
   # Virtual machines UI using QEMU
   cask "utm"
@@ -156,6 +165,7 @@ elsif OS.mac?
   vscode "bierner.markdown-yaml-preamble"
   vscode "editorconfig.editorconfig"
   vscode "harrydowning.yaml-embedded-languages"
+  vscode "ldez.ignore-files"
   vscode "ms-vscode.makefile-tools"
   vscode "streetsidesoftware.code-spell-checker"
   vscode "tamasfe.even-better-toml"
