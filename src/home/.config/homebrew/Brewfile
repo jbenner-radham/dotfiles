@@ -1,6 +1,5 @@
 tap "oven-sh/bun"
 tap "vet-run/vet"
-tap "volllly/tap"
 
 # Asciicast to GIF converter
 brew "agg"
@@ -19,6 +18,9 @@ brew "bat-extras"
 
 # Apjanke's fork of the classic cowsay project
 brew "cowsay"
+
+# Utility for casting strings to title-case according to locale-aware style guides
+brew "decasify"
 
 # Load/unload environment variables based on $PWD
 brew "direnv"
@@ -44,6 +46,9 @@ brew "go"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 
+# Collection of tools that nobody wrote when UNIX was young
+brew "moreutils"
+
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 
@@ -52,6 +57,9 @@ brew "node"
 
 # Swiss-army knife of markup format conversion
 brew "pandoc"
+
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
 
 # Fast, disk space efficient package manager
 brew "pnpm"
@@ -92,6 +100,9 @@ brew "sttr"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
 
+# Add declarative schema to .env files using @env-spec decorator comments
+brew "varlock"
+
 # Your CLI home video recorder
 brew "vhs"
 
@@ -109,9 +120,6 @@ brew "oven-sh/bun/bun"
 
 # Command-line tool that acts as a safety net for the risky curl | bash pattern
 brew "vet-run/vet/vet-run"
-
-# Fully cross platform dotfile manager and dev environment bootstrapper
-brew "volllly/tap/rotz"
 
 # See: https://rubydoc.brew.sh/OS.html
 if OS.linux?
