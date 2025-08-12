@@ -73,3 +73,4 @@ Reference
 - https://google.github.io/styleguide/shellguide.html
 - https://styles.goatbytes.io/lang/shell/
 - https://wiki.zshell.dev/community/zsh_handbook
+- http://redsymbol.net/articles/unofficial-bash-strict-mode/
