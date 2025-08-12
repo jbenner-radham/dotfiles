@@ -18,7 +18,7 @@ if [[ -d "${HOME}/.local/bin" ]]; then
   path=("${HOME}/.local/bin" $path)
 fi
 
-if [[ "${OSTYPE}" == darwin* ]] \
+if [[ "$(uname)" == 'Darwin' ]] \
   && [[ -d "${HOME}/Library/Application Support/JetBrains/Toolbox/scripts" ]]
 then
   path+=("${HOME}/Library/Application Support/JetBrains/Toolbox/scripts")
@@ -60,7 +60,7 @@ unsetopt SHORT_LOOPS # Short loops limit the parser's ability to detect errors.
 # ==================
 
 # Since `.zprofile` doesn't appear to be loaded on Ubuntu init Homebrew here.
-if [[ "${OSTYPE}" = linux* ]] \
+if [[ "$(uname)" == 'Linux' ]] \
   && [[ -x '/home/linuxbrew/.linuxbrew/bin/brew' ]]
 then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

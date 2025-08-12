@@ -46,10 +46,10 @@ if [[ -z "${XDG_STATE_HOME}" ]]; then
 fi
 
 if [[ -z "${XDG_RUNTIME_DIR}" ]]; then
-  if [[ "${OSTYPE}" == darwin* ]]; then
+  if [[ "$(uname)" == 'Darwin' ]]; then
     # `$TMPDIR` ends with a forward slash so we strip it off via `%/`.
     export XDG_RUNTIME_DIR="${TMPDIR%/}/runtime-${UID}"
-  elif [[ "${OSTYPE}" = linux* ]]; then
+  elif [[ "$(uname)" == 'Linux' ]]; then
     export XDG_RUNTIME_DIR="/run/user/$(id -u)"
   fi
 fi
