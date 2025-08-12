@@ -1,6 +1,9 @@
 # http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html
 # http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Zle-Builtins
 # http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Standard-Widgets
+# https://wiki.zshell.dev/docs/guides/syntax/bindkey
+# `man zshzle`
+# `man 5 terminfo`
 
 # Make sure that the terminal is in application mode when zle is active, since
 # only then are the values from `$terminfo` are valid.
