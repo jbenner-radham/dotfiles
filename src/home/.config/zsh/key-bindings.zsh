@@ -2,6 +2,7 @@
 # http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Zle-Builtins
 # http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Standard-Widgets
 # https://wiki.zshell.dev/docs/guides/syntax/bindkey
+# https://thevaluable.dev/zsh-line-editor-configuration-mouseless/
 # `man zshzle`
 # `man 5 terminfo`
 
@@ -22,6 +23,12 @@ fi
 
 # Use Emacs key bindings.
 bindkey -e
+
+# Use Vi insert mode bindings.
+# bindkey -v
+
+# Use Vi command mode bindings.
+# bindkey -a
 
 # [Home] ([Fn + Left Arrow] on Mac) - Go to beginning of line.
 if [[ -n "${terminfo[khome]}" ]]; then
@@ -64,17 +71,18 @@ else
   bindkey -M vicmd "^[3;5~" delete-char
 fi
 
-# [Ctrl + Delete] - Delete whole forward word.
-bindkey -M emacs '^[[3;5~' kill-word
-bindkey -M viins '^[[3;5~' kill-word
-bindkey -M vicmd '^[[3;5~' kill-word
+# [Ctrl + Delete] ([Fn + Ctrl + Delete] on Mac) - Delete whole forward word.
+bindkey '^[[3;5~' kill-word
+# bindkey -M emacs '^[[3;5~' kill-word
+# bindkey -M viins '^[[3;5~' kill-word
+# bindkey -M vicmd '^[[3;5~' kill-word
 
-# [Ctrl + Right Arrow] - Move forward one word.
+# [Ctrl + Right Arrow] (unavailable on Mac) - Move forward one word.
 bindkey -M emacs '^[[1;5C' forward-word
 bindkey -M viins '^[[1;5C' forward-word
 bindkey -M vicmd '^[[1;5C' forward-word
 
-# [Ctrl + Left Arrow] - Move backward one word.
+# [Ctrl + Left Arrow] (unavailable on Mac) - Move backward one word.
 bindkey -M emacs '^[[1;5D' backward-word
 bindkey -M viins '^[[1;5D' backward-word
 bindkey -M vicmd '^[[1;5D' backward-word
@@ -92,7 +100,8 @@ bindkey '^r' history-incremental-search-backward
 # [Space] - Don't do history expansion.
 bindkey ' ' magic-space
 
-# [Ctrl + X] > [Ctrl + E] - Edit the current command line in `$VISUAL`.
+# [Ctrl + X] > [Ctrl + E] - Edit the current command line in `$VISUAL` or
+# `$EDITOR` if the former is unset.
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
