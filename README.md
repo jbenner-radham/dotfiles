@@ -56,7 +56,20 @@ Environment
     3. `~/.zshrc`
     4. `~/.config/zsh/*.zsh`
 
-### Package Management
+### Package Manager
 
 Package management is (mostly) handled by [Homebrew](https://brew.sh/). On
 Ubuntu some packages are managed by `apt` and `snap`.
+
+Reference
+=========
+
+- https://andrewbaker.ninja/2023/10/26/macbook-osx-using-touch-id-fingerprints-to-enable-sudo/
+- https://github.com/SixArm/unix-shell-script-tactics/
+- https://github.com/client9/shlib/
+- https://github.com/jlevy/the-art-of-command-line
+- https://leebyron.com/til/mac-xdg/
+- https://macos-defaults.com/
+- https://google.github.io/styleguide/shellguide.html
+- https://styles.goatbytes.io/lang/shell/
+- https://wiki.zshell.dev/community/zsh_handbook
