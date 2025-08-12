@@ -1,20 +1,34 @@
+# Profiling
+# =========
+
 # Enable profiling using `zprof`.
 # export ENABLE_ZSH_PROFILING=true
 
+# Whimsical Greeting
+# ==================
+
 # Display cowsay greeting with fortune quotes in the shell.
 export ENABLE_COWSAY_GREETING=true
+
+# Eza Configuration
+# =================
 
 # Used by Eza for time formatting.
 # See: https://docs.rs/chrono/latest/chrono/format/strftime/index.html
 export TIME_STYLE="+%b %d %Y %I:%M:%S%P"
 
-# Set the language.
+# Language
+# ========
+
 if [[ -z "${LANG}" ]]; then
   export LANG='en_US.UTF-8'
 fi
 
-# Set the XDG Base Directory environment variables.
+# XDG Base Directory Specification
+# ================================
+
 # See: https://specifications.freedesktop.org/basedir-spec/latest/
+
 if [[ -z "${XDG_CACHE_HOME}" ]]; then
   export XDG_CACHE_HOME="${HOME}/.cache"
 fi
@@ -40,15 +54,24 @@ if [[ -z "${XDG_RUNTIME_DIR}" ]]; then
   fi
 fi
 
+# Oh My Zsh Configuration
+# =======================
+
 # Set the Oh My Zsh cache directory. My completions script is sourced from
 # Oh My Zsh, otherwise I wouldn't need it.
 # See: https://github.com/ohmyzsh/ohmyzsh/wiki/Settings#zsh_cache_dir
 export ZSH_CACHE_DIR="${XDG_CACHE_HOME}/zsh"
 
+# Homebrew Configuration
+# ======================
+
 # Define path to `Brewfile` for Homebrew.
 export HOMEBREW_BUNDLE_FILE="${XDG_CONFIG_HOME}/homebrew/Brewfile"
 
-# Set the preferred editor(s).
+# Editor
+# ======
+
+# Set the preferred editor.
 export EDITOR='vim'
 
 # Note: Some additional environment variables are set in `.zshrc`.
