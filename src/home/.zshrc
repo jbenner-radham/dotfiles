@@ -1,7 +1,13 @@
+# Profiling
+# =========
+
 # Note: This needs to be at the top of the file.
 if [[ "${ENABLE_ZSH_PROFILING}" = true ]]; then
   zmodload zsh/zprof
 fi
+
+# Environment Variables
+# =====================
 
 # Set additional environment variables which can't be set in `.zshenv` because
 # they depend on the Homebrew environment, which is initialized in `.zprofile`,
@@ -34,18 +40,24 @@ else
   export PAGER='less'
 fi
 
+# Options
+# =======
+
 # Expansion and Globbing Options
 # See: https://zsh.sourceforge.io/Doc/Release/Options.html#Expansion-and-Globbing
 
-# Print a warning message when a global parameter is created in a function by an
-# assignment or in math context.
-setopt WARN_CREATE_GLOBAL
+# Do not print a warning message when a global parameter is created in a
+# function by an assignment or in math context.
+unsetopt WARN_CREATE_GLOBAL # Starship creates globals.
 
 # Input/Output Options
 # See: https://zsh.sourceforge.io/Doc/Release/Options.html#Input_002fOutput
 
 # Disallow the short forms of for, repeat, select, if, and function constructs.
 unsetopt SHORT_LOOPS # Short loops limit the parser's ability to detect errors.
+
+# Package Management
+# ==================
 
 # Since `.zprofile` doesn't appear to be loaded on Ubuntu init Homebrew here.
 if [[ "${OSTYPE}" = linux* ]] \
@@ -54,38 +66,25 @@ then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+# XDG Runtime Directory
+# =====================
+
 # Ensure the XDG runtime directory exists and has the appropriate permissions.
 if [[ -n "${XDG_RUNTIME_DIR}" ]]; then
   mkdir -p "${XDG_RUNTIME_DIR}"
   chmod 700 "${XDG_RUNTIME_DIR}"
 fi
 
-# The parenthesized characters are called glob qualifiers and do the following:
-#  .: Match only plain files.
-#  N: Set the `NULL_GLOB` option for the current pattern. This will suppress the
-#     error raised when no files match the current pattern.
-#  r: Match only owner-readable files.
-# See: https://zsh.sourceforge.io/Doc/Release/Expansion.html#Glob-Qualifiers
-# Note: The glob won't work if it's quoted.
-# for file in $XDG_CONFIG_HOME/zsh/*.zsh(.Nr); do
-#   source "${file}"
-# done
+# Plugin Management
+# =================
 
-# Unset our loop variable so it doesn't persist in our shell session.
-# unset file
-
-# Setup Integrations
-if (( $+commands[direnv] )); then
-  eval "$(direnv hook zsh)"
-fi
-
+# Setup Sheldon
 if (( $+commands[sheldon] )); then
   eval "$(sheldon source)"
 fi
 
-if (( $+commands[starship] )); then
-  eval "$(starship init zsh)"
-fi
+# Whimsical Greeting
+# ==================
 
 # A Little Fun
 if [[ "${ENABLE_COWSAY_GREETING}" = true ]] \
@@ -95,9 +94,15 @@ then
   cowsay "$(fortune)"
 fi
 
+# Command Line Completion
+# =======================
+
 # Reinitialize Command Line Completion
 # See: https://thevaluable.dev/zsh-completion-guide-examples/
 autoload -Uz compinit && compinit
+
+# Profiling
+# =========
 
 # Note: This needs to be at the bottom of the file.
 if [[ "${ENABLE_ZSH_PROFILING}" = true ]]; then

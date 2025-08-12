@@ -27,9 +27,21 @@ github = "romkatv/zsh-defer"
 [plugins.auto-venv]
 github = "Skylor-Tang/auto-venv"
 
+[plugins.direnv]
+inline = '''
+  if (( $+commands[direnv] )); then
+    eval "$(direnv hook zsh)"
+  fi'''
+
 [plugins.local]
 local = "~/.config/zsh"
-use = ["*.zsh"]
+use = [
+  "aliases.zsh",
+  "completion.zsh",
+  "directories.zsh",
+  "history.zsh",
+  "key-bindings.zsh"
+]
 
 [plugins.ohmyzsh]
 github = "ohmyzsh/ohmyzsh"
@@ -40,6 +52,12 @@ use = ["clipboard.zsh", "functions.zsh"]
 post = """
   unfunction uninstall_oh_my_zsh
   unfunction upgrade_oh_my_zsh"""
+
+[plugins.starship]
+inline = '''
+  if (( $+commands[starship] )); then
+    eval "$(starship init zsh)"
+  fi'''
 
 [plugins.zsh-autopair]
 github = "hlissner/zsh-autopair"
