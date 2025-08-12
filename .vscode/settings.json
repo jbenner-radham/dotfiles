@@ -79,5 +79,8 @@
         "xadillax",
         "zmodload",
         "zprof"
-    ]
+    ],
+    "editor.rulers": [
+        80, 100
+    ],
 }
