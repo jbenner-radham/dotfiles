@@ -17,7 +17,7 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
   zle -N zle-line-finish
 fi
 
-# Use emacs key bindings
+# Use Emacs key bindings.
 bindkey -e
 
 # [Home] ([Fn + Left Arrow] on Mac) - Go to beginning of line.
