@@ -12,8 +12,7 @@ else
   alias ls='ls --color=auto'
 fi
 
-# Bat
-# If `bat` is installed via `apt` on Ubuntu it is installed as `batcat`.
+# Bat (if `bat` is installed via `apt` on Ubuntu it is installed as `batcat`)
 if (( $+commands[batcat] )); then
   alias bat='batcat'
 fi
