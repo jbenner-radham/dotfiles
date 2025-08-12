@@ -89,7 +89,7 @@ bindkey '^r' history-incremental-search-backward
 # [Space] - Don't do history expansion.
 bindkey ' ' magic-space
 
-# [Ctrl + X] > [Ctrl + E] - Edit the current command line in `$EDITOR`.
+# [Ctrl + X] > [Ctrl + E] - Edit the current command line in `$VISUAL`.
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
