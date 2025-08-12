@@ -74,3 +74,4 @@ Reference
 - https://styles.goatbytes.io/lang/shell/
 - https://wiki.zshell.dev/community/zsh_handbook
 - http://redsymbol.net/articles/unofficial-bash-strict-mode/
+- https://kinoshita.eti.br/2016/11/05/checking-the-operating-system-type-in-shell-script.html
