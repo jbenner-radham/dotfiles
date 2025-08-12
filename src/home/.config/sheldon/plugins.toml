@@ -26,6 +26,7 @@ github = "romkatv/zsh-defer"
 
 [plugins.auto-venv]
 github = "Skylor-Tang/auto-venv"
+apply = ["defer"]
 
 [plugins.direnv]
 inline = '''
