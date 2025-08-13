@@ -88,7 +88,7 @@ bindkey -M emacs '^[[1;5D' backward-word
 bindkey -M viins '^[[1;5D' backward-word
 bindkey -M vicmd '^[[1;5D' backward-word
 
-# [Esc + W] - Kill from the cursor to the mark.
+# [Esc + W] - Kill from the cursor back to the beginning of the line.
 bindkey '\ew' kill-region
 
 # [Esc + L] - Run the command: `la`.
