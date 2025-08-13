@@ -11,5 +11,10 @@
   "javascript.preferences.quoteStyle": "single",
   "terminal.integrated.fontSize": 15,
   "typescript.preferences.quoteStyle": "single",
-  "workbench.editor.empty.hint": "hidden"
+  "workbench.editor.empty.hint": "hidden",
+  "workbench.colorTheme": "Predawn",
+  "theme-by-language.themes": {
+    "*": "Predawn",
+    "markdown": "Predawn GF Markdown"
+  }
 }
