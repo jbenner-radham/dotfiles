@@ -7,6 +7,8 @@
 #
 # Usage:
 #   brew-page <FORMULA|CASK>
+#     OR
+#   brew page <FORMULA|CASK>
 #
 # Examples:
 #   brew-page curl
