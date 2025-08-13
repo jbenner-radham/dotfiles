@@ -124,6 +124,17 @@ brew "oven-sh/bun/bun"
 # Command-line tool that acts as a safety net for the risky curl | bash pattern
 brew "vet-run/vet/vet-run"
 
+# While casks in general are macOS only. Font casks are generally available.
+
+# Monospaced font with programming ligatures, patched with glyphs
+cask "font-fira-code-nerd-font"
+
+# A typeface for developers, patched with glyphs
+cask "font-jetbrains-mono-nerd-font"
+
+# Open source monospace font
+cask "font-maple-mono"
+
 # See: https://rubydoc.brew.sh/OS.html
 if OS.linux?
   # ...
@@ -132,15 +143,6 @@ elsif OS.mac?
 
   # Web browser
   cask "firefox"
-
-  # Monospaced font with programming ligatures, patched with glyphs
-  cask "font-fira-code-nerd-font"
-
-  # A typeface for developers, patched with glyphs
-  cask "font-jetbrains-mono-nerd-font"
-
-  # Open source monospace font
-  cask "font-maple-mono"
 
   # Tool to optimize images to a smaller size
   cask "imageoptim"
