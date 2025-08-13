@@ -30,10 +30,12 @@ fi
 # See: https://specifications.freedesktop.org/basedir-spec/latest/
 
 if [[ -z "${XDG_CACHE_HOME}" ]]; then
+  # TODO: Maybe set to `"${HOME}/Library/Caches"` on macOS?
   export XDG_CACHE_HOME="${HOME}/.cache"
 fi
 
 if [[ -z "${XDG_CONFIG_HOME}" ]]; then
+  # TODO: Maybe set to `"${HOME}/Library/Application Support"` on macOS?
   export XDG_CONFIG_HOME="${HOME}/.config"
 fi
 
