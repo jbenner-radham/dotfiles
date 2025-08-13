@@ -1,3 +1,5 @@
+# Based on: https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/history.zsh
+
 [[ -z "${HISTFILE}" ]] && HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
 (( HISTSIZE < 50000 )) && HISTSIZE=50000
 (( SAVEHIST < 10000 )) && SAVEHIST=10000

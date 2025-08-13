@@ -1,3 +1,5 @@
+# Based on: https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/completion.zsh
+
 # Should be called before compinit(?)
 zmodload zsh/complist
 

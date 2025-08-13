@@ -1,3 +1,5 @@
+# Based on: https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/key-bindings.zsh
+
 # http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html
 # http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Zle-Builtins
 # http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Standard-Widgets
@@ -72,10 +74,9 @@ else
 fi
 
 # [Ctrl + Delete] ([Fn + Ctrl + Delete] on Mac) - Delete whole forward word.
-bindkey '^[[3;5~' kill-word
-# bindkey -M emacs '^[[3;5~' kill-word
-# bindkey -M viins '^[[3;5~' kill-word
-# bindkey -M vicmd '^[[3;5~' kill-word
+bindkey -M emacs '^[[3;5~' kill-word
+bindkey -M viins '^[[3;5~' kill-word
+bindkey -M vicmd '^[[3;5~' kill-word
 
 # [Ctrl + Right Arrow] (unavailable on Mac) - Move forward one word.
 bindkey -M emacs '^[[1;5C' forward-word
