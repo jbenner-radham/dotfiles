@@ -76,4 +76,14 @@ export HOMEBREW_BUNDLE_FILE="${XDG_CONFIG_HOME}/homebrew/Brewfile"
 # Set the preferred editor.
 export EDITOR='vim'
 
+# Determine if we're operating within an editor terminal.
+if [[ "${TERM_PROGRAM}" = 'Jetbrains.Fleet' ]] \
+  || [[ "${TERM_PROGRAM}" = 'vscode' ]] \
+  || [[ "${TERMINAL_EMULATOR}" = 'JetBrains-JediTerm' ]]
+then
+  export IN_EDITOR_TERMINAL=true
+else
+  export IN_EDITOR_TERMINAL=false
+fi
+
 # Note: Some additional environment variables are set in `.zshrc`.
