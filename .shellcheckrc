@@ -1,0 +1,7 @@
+# Shellcheck lacks Zsh support. To get around this, we run it in Bash mode. This
+# way, we can still catch some errors, and a partial check is always better than
+# no check at all.
+shell=bash
+
+# Shellcheck doesn't understand Zsh's parameter expansion syntax.
+disable=SC2296
