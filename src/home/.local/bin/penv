@@ -25,17 +25,17 @@ function main() {
   # newlines. This is a shorthand for `ps:\n:`.
   local -r env_vars=("${(f)$(env)}")
   local -r filter="${1:-}"
-  local env_vars_filtered=()
+  local filtered=()
 
   for line in "${env_vars[@]}"; do
     if [[ -z "${filter}" ]]; then
-      env_vars_filtered+=("${line}")
+      filtered+=("${line}")
     elif [[ -n "${filter}" ]] && [[ "${line}" = *"${filter}"* ]]; then
-      env_vars_filtered+=("${line}")
+      filtered+=("${line}")
     fi
   done
 
-  print -lo "${env_vars_filtered[@]}"
+  print -lo "${filtered[@]}"
 }
 
 main "${@}"
