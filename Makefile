@@ -10,13 +10,13 @@ install: install-darwin-only install-linux-only
 
 install-darwin-only:
 ifeq ($(UNAME), Darwin)
-		@rsync --dry-run --mkpath --recursive --times --verbose --verbose \
+		@rsync --mkpath --recursive --times --verbose --verbose \
 			src/home/.config/Code "${HOME}/Library/Application Support"
 endif
 
 install-linux-only:
 ifeq ($(UNAME), Linux)
-		@rsync --dry-run --mkpath --recursive --times --verbose --verbose \
+		@rsync --mkpath --recursive --times --verbose --verbose \
 			src/home/.config/Code "${HOME}/.config"
 endif
 
