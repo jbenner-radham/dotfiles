@@ -22,8 +22,5 @@ if (( $+commands[prettybat] )); then
   alias pbat='prettybat'
 fi
 
-# Pretty Print Environment Variables
-alias penv='print -ol $(env)'
-
 # Pretty Print Path
 alias ppath='print -l ${path}'

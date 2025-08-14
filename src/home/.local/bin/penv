@@ -1,0 +1,41 @@
+#!/usr/bin/env zsh
+
+set -o errexit
+set -o noglob
+set -o nounset
+set -o pipefail
+
+# Enable this to assist with debugging errors.
+# set -o xtrace
+
+# Pretty print the environment variables in alphabetical order.
+#
+# Arguments:
+#   A filter to fuzzy find on (optional).
+#
+# Usage:
+#   penv [FILTER]
+#
+# Examples:
+#   penv
+#   penv XDG
+#   penv TERM
+function main() {
+  # The `f` parameter expansion flag splits the result of the expansion at
+  # newlines. This is a shorthand for `ps:\n:`.
+  local -r env_vars=("${(f)$(env)}")
+  local -r filter="${1:-}"
+  local env_vars_filtered=()
+
+  for line in "${env_vars[@]}"; do
+    if [[ -z "${filter}" ]]; then
+      env_vars_filtered+=("${line}")
+    elif [[ -n "${filter}" ]] && [[ "${line}" = *"${filter}"* ]]; then
+      env_vars_filtered+=("${line}")
+    fi
+  done
+
+  print -lo "${env_vars_filtered[@]}"
+}
+
+main "${@}"
