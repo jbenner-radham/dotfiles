@@ -81,13 +81,14 @@ github = "zsh-users/zsh-syntax-highlighting"
 apply = ["defer"]
 
 [plugins.zsh-syntax-highlighting.hooks]
-post = '''
+post = """
+  # See: https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md
   if (( ! ${+ZSH_HIGHLIGHT_STYLES} )); then
     typeset -A ZSH_HIGHLIGHT_STYLES
   fi
 
-  ZSH_HIGHLIGHT_STYLES[alias]="fg=magenta,bold"
-  ZSH_HIGHLIGHT_STYLES[globbing]="fg=yellow"'''
+  ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta'
+  ZSH_HIGHLIGHT_STYLES[globbing]='fg=yellow,bold'"""
 
 # This needs to be loaded after zsh-syntax-highlighting.
 [plugins.zsh-history-substring-search]
