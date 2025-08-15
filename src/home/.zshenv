@@ -73,7 +73,7 @@ export HOMEBREW_BUNDLE_FILE="${XDG_CONFIG_HOME}/homebrew/Brewfile"
 # Less Configuration
 # ==================
 
-# # Turn off command and search history.
+# Turn off command and search history.
 export LESSHISTFILE=-
 
 # Enable to see the `TERMCAP`s used in a man page.
