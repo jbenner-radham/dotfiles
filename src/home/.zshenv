@@ -20,17 +20,9 @@ export TIME_STYLE="+%b %d %Y %I:%M:%S%P"
 # History
 # =======
 
-if [[ -z "${HISTFILE}" ]]; then
-  export HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
-fi
-
-if [[ -z "${HISTSIZE}" ]] || (( HISTSIZE < 50000 )); then
-  export HISTSIZE=50000
-fi
-
-if [[ -z "${SAVEHIST}" ]] || (( SAVEHIST < 10000 )); then
-  export SAVEHIST=10000
-fi
+# The history related environment variables are set in
+# `$HOME/.config/zsh/history.zsh` because on macOS they get overwritten by
+# `/etc/zshrc` if set here.
 
 # Language
 # ========
