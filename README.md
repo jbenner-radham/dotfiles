@@ -80,6 +80,7 @@ Ubuntu some packages are managed by `apt` and `snap`.
 Reference
 =========
 
+- https://github.com/jbenner-radham/assorted-notes/blob/main/topics/unix-shells.md
 - https://andrewbaker.ninja/2023/10/26/macbook-osx-using-touch-id-fingerprints-to-enable-sudo/
 - https://github.com/SixArm/unix-shell-script-tactics/
 - https://github.com/client9/shlib/
