@@ -56,6 +56,14 @@ Environment
     3. `~/.zshrc`
     4. `~/.config/zsh/*.zsh`
 
+> [!NOTE]
+> After updating your [Sheldon](https://sheldon.cli.rs/) configuration you may
+> need to manually update your lockfile via:
+>
+> ```shell
+> sheldon lock
+> ```
+
 ### Package Manager
 
 Package management is (mostly) handled by [Homebrew](https://brew.sh/). On
