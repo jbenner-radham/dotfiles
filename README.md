@@ -57,8 +57,9 @@ Environment
     4. `~/.config/zsh/*.zsh`
 
 > [!NOTE]
-> After updating your [Sheldon](https://sheldon.cli.rs/) configuration you may
-> need to manually update your lockfile via:
+> After updating your [Sheldon](https://sheldon.cli.rs/) configuration or adding
+> new configuration files to `$HOME/.config/zsh` you may need to manually update
+> your lockfile via:
 >
 > ```shell
 > sheldon lock
