@@ -36,13 +36,7 @@ inline = '''
 
 [plugins.local]
 local = "~/.config/zsh"
-use = [
-  "aliases.zsh",
-  "completion.zsh",
-  "directories.zsh",
-  "history.zsh",
-  "key-bindings.zsh"
-]
+use = ["*.zsh"]
 
 [plugins.ohmyzsh]
 github = "ohmyzsh/ohmyzsh"
@@ -50,9 +44,9 @@ dir = "lib"
 use = ["clipboard.zsh", "functions.zsh"]
 
 [plugins.ohmyzsh.hooks]
-post = """
+post = '''
   unfunction uninstall_oh_my_zsh
-  unfunction upgrade_oh_my_zsh"""
+  unfunction upgrade_oh_my_zsh'''
 
 [plugins.starship]
 inline = '''
