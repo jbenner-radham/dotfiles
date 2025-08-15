@@ -98,7 +98,20 @@ fi
 # Command Line Completion
 # =======================
 
-# Reinitialize Command Line Completion
+# Add Homebrew completions to `$FPATH`.
+if [[ "$(uname)" = 'Darwin' ]] \
+  && [[ -d /opt/homebrew/share/zsh/site-functions ]]
+then
+  fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
+elif [[ "$(uname)" = 'Linux' ]] \
+  && [[ -d /home/linuxbrew/.linuxbrew/share/zsh/site-functions ]]
+then
+  fpath=(/home/linuxbrew/.linuxbrew/share/zsh/site-functions $fpath)
+fi
+
+export FPATH
+
+# Reinitialize command line completion.
 # See: https://thevaluable.dev/zsh-completion-guide-examples/
 autoload -Uz compinit && compinit
 
