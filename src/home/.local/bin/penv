@@ -27,15 +27,20 @@ function main() {
   local -r filter="${1:-}"
   local filtered=()
 
-  for line in "${env_vars[@]}"; do
+  for line in ${env_vars}; do
     if [[ -z "${filter}" ]]; then
       filtered+=("${line}")
-    elif [[ -n "${filter}" ]] && [[ "${line}" = *"${filter}"* ]]; then
+    elif [[ "${line}" = *"${filter}"* ]]; then
       filtered+=("${line}")
     fi
   done
 
-  print -lo "${filtered[@]}"
+
+  # Pipe to `cat -v` to display non-printing characters so they are visible.
+  #
+  # We need to reference this variable as an array so we can't quote it.
+  # shellcheck disable=SC2086
+  print -lo ${filtered} | cat -v
 }
 
 main "${@}"
