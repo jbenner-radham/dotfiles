@@ -66,7 +66,7 @@ Environment
 > ```
 
 > [!NOTE]
-> To reload your zsh after configuration changes run the following:
+> To manually reload your zsh after configuration changes run the following:
 >
 > ```shell
 > exec zsh
