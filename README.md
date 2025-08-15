@@ -65,7 +65,7 @@ Environment
 > sheldon lock
 > ```
 
-> [!NOTE]
+> [!TIP]
 > To manually reload your zsh after configuration changes run the following:
 >
 > ```shell
