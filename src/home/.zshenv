@@ -17,6 +17,21 @@ export ENABLE_COWSAY_GREETING=true
 # See: https://docs.rs/chrono/latest/chrono/format/strftime/index.html
 export TIME_STYLE="+%b %d %Y %I:%M:%S%P"
 
+# History
+# =======
+
+if [[ -z "${HISTFILE}" ]]; then
+  export HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
+fi
+
+if [[ -z "${HISTSIZE}" ]] || (( HISTSIZE < 50000 )); then
+  export HISTSIZE=50000
+fi
+
+if [[ -z "${SAVEHIST}" ]] || (( SAVEHIST < 10000 )); then
+  export SAVEHIST=10000
+fi
+
 # Language
 # ========
 

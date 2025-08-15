@@ -1,9 +1,3 @@
-# Based on: https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/history.zsh
-
-[[ -z "${HISTFILE}" ]] && HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
-(( HISTSIZE < 50000 )) && HISTSIZE=50000
-(( SAVEHIST < 10000 )) && SAVEHIST=10000
-
 # History Options <https://zsh.sourceforge.io/Doc/Release/Options.html#History>
 setopt EXTENDED_HISTORY        # Save each command’s beginning timestamp (in seconds since the epoch) and the duration (in seconds) to the history file.
 setopt HIST_EXPIRE_DUPS_FIRST  # If the internal history needs to be trimmed to add the current command line, setting this option will cause the oldest history event that has a duplicate to be lost before losing a unique event from the list.
