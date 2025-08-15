@@ -33,13 +33,6 @@ else
   export VISUAL="${EDITOR}"
 fi
 
-# Set the preferred pager.
-if (( $+commands[bat] )); then
-  export PAGER='bat'
-else
-  export PAGER='less'
-fi
-
 # Set the preferred man pager.
 if (( $+commands[nvim] )); then
   # Not nicely colorized like `less`, but worth it just for the `gO` command.
