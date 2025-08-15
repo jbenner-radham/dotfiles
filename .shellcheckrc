@@ -3,5 +3,9 @@
 # no check at all.
 shell=bash
 
+# Arrays without an index reference the entire array instead of just the first
+# element in Zsh.
+disable=SC2128
+
 # Shellcheck doesn't understand Zsh's parameter expansion syntax.
 disable=SC2296
