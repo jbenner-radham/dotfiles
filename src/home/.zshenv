@@ -73,11 +73,18 @@ export HOMEBREW_BUNDLE_FILE="${XDG_CONFIG_HOME}/homebrew/Brewfile"
 # Less Configuration
 # ==================
 
-# Turn off command and search history.
+# # Turn off command and search history.
 export LESSHISTFILE=-
+
+# Enable to see the `TERMCAP`s used in a man page.
+# export LESS_TERMCAP_DEBUG=1
 
 # Configure text styling when using `less` as a man pager.
 # See: `man 5 terminfo` (search TCap Code e.g., mb, md, etc.)
+#
+# TODO: Use `${HOME}/.lesskey` to store these so they don't mess with the
+# environment when running `env`. Maybe build a `.lesskey` file during
+# `make install`?
 
 # Turn on blinking.
 export LESS_TERMCAP_mb="$(tput blink)"
@@ -98,25 +105,25 @@ export LESS_TERMCAP_mr="$(tput rev)" # Invert colors.
 export LESS_TERMCAP_se="$(tput rmso; tput sgr0)"
 
 # Begin standout mode.
-export LESS_TERMCAP_so="$(tput bold; tput setaf 3)" # bold yellow.
+export LESS_TERMCAP_so="$(tput bold; tput setaf 3)" # Bold yellow.
 
 # Exit underline mode.
 export LESS_TERMCAP_ue="$(tput rmul; tput sgr0)"
 
 # Begin underline mode.
-export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 1) # Underlined bold red.
+export LESS_TERMCAP_us="$(tput smul; tput bold; tput setaf 1)" # Underlined bold red.
 
 # Enter subscript mode.
-export LESS_TERMCAP_ZN=$(tput ssubm)
+export LESS_TERMCAP_ZN="$(tput ssubm)"
 
 # Enter superscript mode.
-export LESS_TERMCAP_ZO=$(tput ssupm)
+export LESS_TERMCAP_ZO="$(tput ssupm)"
 
 # End subscript mode.
-export LESS_TERMCAP_ZV=$(tput rsubm)
+export LESS_TERMCAP_ZV="$(tput rsubm)"
 
 # End superscript mode.
-export LESS_TERMCAP_ZW=$(tput rsupm)
+export LESS_TERMCAP_ZW="$(tput rsupm)"
 
 # Editor
 # ======
