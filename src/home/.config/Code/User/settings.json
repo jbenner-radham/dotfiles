@@ -5,16 +5,11 @@
   "editor.fontLigatures": true,
   "editor.fontSize": 15,
   "editor.minimap.autohide": "scroll",
-  "editor.rulers": [80, 100, 120],
+  "editor.rulers": [80, 100],
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "javascript.preferences.quoteStyle": "single",
   "terminal.integrated.fontSize": 15,
   "typescript.preferences.quoteStyle": "single",
-  "workbench.editor.empty.hint": "hidden",
-  "workbench.colorTheme": "Predawn",
-  "theme-by-language.themes": {
-    "*": "Predawn",
-    "markdown": "Predawn GF Markdown"
-  }
+  "workbench.editor.empty.hint": "hidden"
 }
