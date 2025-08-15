@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# Open the homepage of a Homebrew formula or cask.
+# Open the homepage of a Homebrew formula or cask in the default web browser.
 #
 # Arguments:
 #   Name of formula or cask.
@@ -43,8 +43,13 @@ function main() {
     printf '%sError:%s %s\n' "${red}" "${reset}" "${@}" >&2
   }
 
-  if [[ "${#}" -eq 0 ]]; then
+  if (( # == 0 )); then
     print_error 'A formula or cask argument is required.'
+    exit 1
+  fi
+
+  if (( # > 1 )); then
+    print_error 'Only one formula or cask argument is accepted.'
     exit 1
   fi
 
@@ -78,7 +83,7 @@ function main() {
   local casks_length
   local filter
   local formulae_length
-  local -r json="$(brew info --json=v2 "${@}")"
+  local -r json="$(brew info --json=v2 "${1}")"
 
   # We use `printf` instead of `echo` here because the output from `echo` can
   # result in parse errors for `jq` (e.g., when querying pnpm).
