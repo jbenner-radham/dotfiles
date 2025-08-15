@@ -38,8 +38,9 @@ if (( $+commands[nvim] )); then
   # Not nicely colorized like `less`, but worth it just for the `gO` command.
   export MANPAGER='nvim +Man!'
 else
-  # The default is `less -sR`, the added flags enable percentage display.
-  # Colorization is configured via the `LESS_TERMCAP_*` environment variables.
+  # Supposedly the default is `less -sR`, the added flags enable percentage
+  # display. Colorization is configured via the `LESS_TERMCAP_*` environment
+  # variables.
   export MANPAGER='less -MRs +Gg'
 
   # Required to colorize man pages viewed via `less` on Ubuntu.
