@@ -65,6 +65,13 @@ Environment
 > sheldon lock
 > ```
 
+> [!NOTE]
+> To reload your zsh after configuration changes run the following:
+>
+> ```shell
+> exec zsh
+> ```
+
 ### Package Manager
 
 Package management is (mostly) handled by [Homebrew](https://brew.sh/). On
