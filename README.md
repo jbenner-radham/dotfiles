@@ -46,7 +46,7 @@ Environment
 
 ### Shell
 
-[Z Shell](https://zsh.sourceforge.io/) is the primary shell.
+[Z Shell (zsh)](https://zsh.sourceforge.io/) is the primary shell.
 
 - Plugins are managed via [Sheldon](https://sheldon.cli.rs/).
 - The prompt utilized is [Starship](https://starship.rs/).
