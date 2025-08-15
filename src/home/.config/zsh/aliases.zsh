@@ -24,3 +24,6 @@ fi
 
 # Pretty Print Path
 alias ppath='print -l ${path}'
+
+# Wget (without creating a `${HOME}/.wget-hsts` file)
+alias wget='wget --hsts-file=/dev/null'
