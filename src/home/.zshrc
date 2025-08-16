@@ -104,7 +104,8 @@ then
   fpath=(/home/linuxbrew/.linuxbrew/share/zsh/site-functions $fpath)
 fi
 
-export FPATH
+# We don't need to export `$FPATH` since we invoke `compinit` directly below.
+# export FPATH
 
 # Reinitialize command line completion. Of note, Zsh formally recommends using
 # `autoload -U compinit` instead of `autoload -Uz compinit` on their homepage.
