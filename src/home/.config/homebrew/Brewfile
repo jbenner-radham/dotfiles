@@ -46,6 +46,9 @@ brew "go"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 
+# Pager program similar to more
+brew "less"
+
 # Collection of tools that nobody wrote when UNIX was young
 brew "moreutils"
 
