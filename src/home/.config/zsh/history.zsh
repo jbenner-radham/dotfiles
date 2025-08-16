@@ -1,8 +1,6 @@
 # Based on: https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/history.zsh
 
-if [[ -z "${HISTFILE}" ]]; then
-  export HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
-fi
+export HISTFILE="${XDG_STATE_HOME}/zsh/history"
 
 if (( HISTSIZE < 50000 )); then
   export HISTSIZE=50000

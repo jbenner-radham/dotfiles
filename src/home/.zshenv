@@ -31,6 +31,16 @@ if [[ -z "${LANG}" ]]; then
   export LANG='en_US.UTF-8'
 fi
 
+# macOS Configuration
+# ===================
+
+if [[ "$(uname)" == 'Darwin' ]]; then
+  # Disable Apple's "Save/Restore Shell State" feature for `Terminal.app`. This
+  # prevents writing to `$HOME/.zsh_sessions` and is unnecessary if the
+  # `SHARE_HISTORY` option is set.
+  export SHELL_SESSIONS_DISABLE=1
+fi
+
 # XDG Base Directory Specification
 # ================================
 
