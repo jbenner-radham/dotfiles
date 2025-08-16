@@ -69,9 +69,9 @@ function main() {
 
   # Since Shellcheck doesn't support Zsh it doesn't recognize `$+commands`.
   # shellcheck disable=SC2154
-  if [[ "$(uname)" = 'Darwin' ]] && (( $+commands[open] )); then
+  if [[ "$(uname)" == 'Darwin' ]] && (( $+commands[open] )); then
     opener='open'
-  elif [[ "$(uname)" = 'Linux' ]] && (( $+commands[xdg-open] )); then
+  elif [[ "$(uname)" == 'Linux' ]] && (( $+commands[xdg-open] )); then
     opener='xdg-open'
   fi
 
