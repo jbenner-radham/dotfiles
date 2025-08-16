@@ -32,16 +32,4 @@ LESS_TERMCAP_ue = $(tput rmul; tput sgr0)
 
 # Begin underline mode.
 LESS_TERMCAP_us = $(tput smul; tput bold; tput setaf 1) # Underlined bold red.
-
-# Enter subscript mode.
-LESS_TERMCAP_ZN = $(tput ssubm)
-
-# Enter superscript mode.
-LESS_TERMCAP_ZO = $(tput ssupm)
-
-# End subscript mode.
-LESS_TERMCAP_ZV = $(tput rsubm)
-
-# End superscript mode.
-LESS_TERMCAP_ZW = $(tput rsupm)
 EOF
