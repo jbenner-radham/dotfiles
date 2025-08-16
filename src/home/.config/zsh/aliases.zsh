@@ -20,7 +20,7 @@ fi
 # Neovim Man Pager
 if (( $+commands[nvim] )); then
   # Not nicely colorized like `less`, but worth it just for the `gO` command.
-  alias nvimman='MANPAGER="nvim +Man!" man'
+  alias nman='MANPAGER="nvim +Man!" man'
 fi
 
 # Pretty Bat (from bat-extras)
