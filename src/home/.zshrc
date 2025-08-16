@@ -2,7 +2,7 @@
 # =========
 
 # Note: This needs to be at the top of the file.
-if [[ "${ENABLE_ZSH_PROFILING}" = true ]]; then
+if [[ "${ENABLE_ZSH_PROFILING}" == true ]]; then
   zmodload zsh/zprof
 fi
 
@@ -80,8 +80,8 @@ fi
 # ==================
 
 # A Little Fun
-if [[ "${ENABLE_COWSAY_GREETING}" = true ]] \
-  && [[ "${IN_EDITOR_TERMINAL}" = false ]] \
+if [[ "${ENABLE_COWSAY_GREETING}" == true ]] \
+  && [[ "${IN_EDITOR_TERMINAL}" == false ]] \
   && (( $+commands[cowsay] )) \
   && (( $+commands[fortune] ))
 then
@@ -92,12 +92,12 @@ fi
 # =======================
 
 # Add Homebrew completions to `$FPATH`.
-if [[ "$(uname)" = 'Darwin' ]] \
+if [[ "$(uname)" == 'Darwin' ]] \
   && [[ -d /opt/homebrew/share/zsh/site-functions ]] \
   && (( ! $fpath[(Ie)/opt/homebrew/share/zsh/site-functions] ))
 then
   fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
-elif [[ "$(uname)" = 'Linux' ]] \
+elif [[ "$(uname)" == 'Linux' ]] \
   && [[ -d /home/linuxbrew/.linuxbrew/share/zsh/site-functions ]] \
   && (( ! $fpath[(Ie)/home/linuxbrew/.linuxbrew/share/zsh/site-functions] ))
 then
@@ -114,6 +114,6 @@ autoload -Uz compinit && compinit
 # =========
 
 # Note: This needs to be at the bottom of the file.
-if [[ "${ENABLE_ZSH_PROFILING}" = true ]]; then
+if [[ "${ENABLE_ZSH_PROFILING}" == true ]]; then
   zprof
 fi
