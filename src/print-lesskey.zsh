@@ -6,6 +6,20 @@ cat -v << EOF
 # Configure text styling when using \`less\` as a man pager.
 # See: \`man 5 terminfo\` (search "TCap Code" e.g., mb, md, etc.)
 
+# The \`tput setaf %d\` command sets the foreground color based upon the
+# provided number which can be looked up in the following table:
+#
+# | Color   | Value |
+# |---------|-------|
+# | Black   | 0     |
+# | Red     | 1     |
+# | Green   | 2     |
+# | Yellow  | 3     |
+# | Blue    | 4     |
+# | Magenta | 5     |
+# | Cyan    | 6     |
+# | White   | 7     |
+
 # Turn on blinking.
 LESS_TERMCAP_mb = $(tput blink)
 
