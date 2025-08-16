@@ -28,11 +28,11 @@ function main() {
   local filtered=()
 
   for line in ${env_vars}; do
-    if [[ -z "${filter}" ]]; then
-      filtered+=("${line}")
-    elif [[ "${line}" = *"${filter}"* ]]; then
-      filtered+=("${line}")
+    if [[ -n "${filter}" ]] && [[ "${line}" != *"${filter}"* ]]; then
+      continue
     fi
+
+    filtered+=("${line}")
   done
 
 
