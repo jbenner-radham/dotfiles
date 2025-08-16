@@ -93,9 +93,9 @@ export LESSHISTFILE=-
 export EDITOR='vim'
 
 # Determine if we're operating within an editor terminal.
-if [[ "${TERM_PROGRAM}" = 'Jetbrains.Fleet' ]] \
-  || [[ "${TERM_PROGRAM}" = 'vscode' ]] \
-  || [[ "${TERMINAL_EMULATOR}" = 'JetBrains-JediTerm' ]]
+if [[ "${TERMINAL_EMULATOR}" == 'JetBrains-JediTerm' ]] \
+  || [[ "${TERM_PROGRAM}" == 'Jetbrains.Fleet' ]] \
+  || [[ "${TERM_PROGRAM}" == 'vscode' ]]
 then
   export IN_EDITOR_TERMINAL=true
 else
