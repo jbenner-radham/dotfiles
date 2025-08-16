@@ -107,7 +107,8 @@ fi
 
 # Supposedly the default is `less -sR`, the added flags enable location
 # percentage display. Colorization is configured via the `LESS_TERMCAP_*`
-# `$HOME/.lesskey` variables.
+# `$HOME/.lesskey` variables, which are only read on macOS if `less` is
+# installed via Homebrew.
 export MANPAGER='less -MRs +Gg'
 
 # Required to colorize man pages viewed via `less` on Ubuntu.
