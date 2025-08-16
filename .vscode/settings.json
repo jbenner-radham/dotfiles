@@ -49,6 +49,7 @@
     "menuselect",
     "mkpath",
     "moreutils",
+    "nman",
     "nocompatible",
     "noexpandtab",
     "ohmyzsh",
