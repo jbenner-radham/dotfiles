@@ -106,10 +106,12 @@ fi
 
 export FPATH
 
-# Reinitialize command line completion. Zsh formally recommends using
+# Reinitialize command line completion. Of note, Zsh formally recommends using
 # `autoload -U compinit` instead of `autoload -Uz compinit` on their homepage.
 # See: https://thevaluable.dev/zsh-completion-guide-examples/
-autoload -U compinit && compinit
+if autoload -U compinit; then
+  compinit
+fi
 
 # Profiling
 # =========
