@@ -17,6 +17,12 @@ if (( $+commands[batcat] )); then
   alias bat='batcat'
 fi
 
+# Neovim Man Pager
+if (( $+commands[nvim] )); then
+  # Not nicely colorized like `less`, but worth it just for the `gO` command.
+  alias nvimman='MANPAGER="nvim +Man!" man'
+fi
+
 # Pretty Bat (from bat-extras)
 if (( $+commands[prettybat] )); then
   alias pbat='prettybat'

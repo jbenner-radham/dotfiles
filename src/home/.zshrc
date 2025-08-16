@@ -6,12 +6,22 @@ if [[ "${ENABLE_ZSH_PROFILING}" = true ]]; then
   zmodload zsh/zprof
 fi
 
+# Package Management
+# ==================
+
+# Since `.zprofile` doesn't appear to be loaded on Ubuntu init Homebrew here.
+if [[ "$(uname)" == 'Linux' ]] \
+  && [[ -x '/home/linuxbrew/.linuxbrew/bin/brew' ]]
+then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 # Environment Variables
 # =====================
 
 # Set additional environment variables which can't be set in `.zshenv` because
-# they depend on the Homebrew environment, which is initialized in `.zprofile`,
-# which is loaded after `.zshenv`.
+# they depend on the Homebrew environment, which is initialized in `.zprofile`
+# (or above), which is loaded after `.zshenv`.
 
 # Add items to the path.
 if [[ -d "${HOME}/.local/bin" ]]; then
@@ -33,20 +43,6 @@ else
   export VISUAL="${EDITOR}"
 fi
 
-# Set the preferred man pager.
-if (( $+commands[nvim] )); then
-  # Not nicely colorized like `less`, but worth it just for the `gO` command.
-  export MANPAGER='nvim +Man!'
-else
-  # Supposedly the default is `less -sR`, the added flags enable percentage
-  # display. Colorization is configured via the `LESS_TERMCAP_*` environment
-  # variables.
-  export MANPAGER='less -MRs +Gg'
-
-  # Required to colorize man pages viewed via `less` on Ubuntu.
-  export GROFF_NO_SGR=1
-fi
-
 # Options
 # =======
 
@@ -62,16 +58,6 @@ unsetopt WARN_CREATE_GLOBAL # Starship creates globals.
 
 # Disallow the short forms of for, repeat, select, if, and function constructs.
 unsetopt SHORT_LOOPS # Short loops limit the parser's ability to detect errors.
-
-# Package Management
-# ==================
-
-# Since `.zprofile` doesn't appear to be loaded on Ubuntu init Homebrew here.
-if [[ "$(uname)" == 'Linux' ]] \
-  && [[ -x '/home/linuxbrew/.linuxbrew/bin/brew' ]]
-then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
 
 # XDG Runtime Directory
 # =====================

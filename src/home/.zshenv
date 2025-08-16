@@ -102,4 +102,15 @@ else
   export IN_EDITOR_TERMINAL=false
 fi
 
+# Manpager
+# ========
+
+# Supposedly the default is `less -sR`, the added flags enable location
+# percentage display. Colorization is configured via the `LESS_TERMCAP_*`
+# `$HOME/.lesskey` variables.
+export MANPAGER='less -MRs +Gg'
+
+# Required to colorize man pages viewed via `less` on Ubuntu.
+export GROFF_NO_SGR=1
+
 # Note: Some additional environment variables are set in `.zshrc`.
