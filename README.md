@@ -27,7 +27,7 @@ Install Homebrew:
 Install the Homebrew packages:
 
 ```shell
-brew bundle install --file $PATH_TO_BREWFILE
+brew bundle install --file ./src/home/.config/homebrew/Brewfile
 ```
 
 Install the dotfiles:
