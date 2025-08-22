@@ -59,6 +59,7 @@
     "osascript",
     "pandoc",
     "pbat",
+    "PCRE",
     "penv",
     "ppath",
     "prettybat",
