@@ -85,6 +85,7 @@ Reference
 - https://github.com/SixArm/unix-shell-script-tactics/
 - https://github.com/client9/shlib/
 - https://github.com/jlevy/the-art-of-command-line
+- https://gist.github.com/JBlond/2fea43a3049b38287e5e9cefc87b2124
 - https://leebyron.com/til/mac-xdg/
 - https://macos-defaults.com/
 - https://google.github.io/styleguide/shellguide.html
