@@ -102,7 +102,8 @@ bindkey '^r' history-incremental-search-backward
 bindkey ' ' magic-space
 
 # [Ctrl + X] > [Ctrl + E] - Edit the current command line in `$VISUAL` or
-# `$EDITOR` if the former is unset.
+# `$EDITOR` if the former is unset and finally fall back to `vi`.
+# See: https://github.com/zsh-users/zsh/blob/19767e11291d96acf567003c69972a973b717f39/Functions/Zle/edit-command-line#L55
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
