@@ -23,7 +23,14 @@ fi
 # they depend on the Homebrew environment, which is initialized in `.zprofile`
 # (or above), which is loaded after `.zshenv`.
 
+# Set Cargo config.
+# See: https://doc.rust-lang.org/cargo/reference/environment-variables.html
+if (( $+commands[cargo] )); then
+  export CARGO_HOME="${XDG_DATA_HOME}/cargo"
+fi
+
 # Set Go config.
+# See: https://go.dev/wiki/SettingGOPATH
 if (( $+commands[go] )); then
   export GOPATH="${XDG_DATA_HOME}/go"
 fi
@@ -33,7 +40,11 @@ if [[ -d "${HOME}/.local/bin" ]]; then
   path=("${HOME}/.local/bin" $path)
 fi
 
-if [[ -n "$GOPATH" ]]; then
+if [[ -n "${CARGO_HOME}" ]]; then
+  path+=("${CARGO_HOME}/bin")
+fi
+
+if [[ -n "${GOPATH}" ]]; then
   path+=("${GOPATH}/bin")
 fi
 
