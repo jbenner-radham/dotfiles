@@ -23,9 +23,18 @@ fi
 # they depend on the Homebrew environment, which is initialized in `.zprofile`
 # (or above), which is loaded after `.zshenv`.
 
+# Set Go config.
+if (( $+commands[go] )); then
+  export GOPATH="${XDG_DATA_HOME}/go"
+fi
+
 # Add items to the path.
 if [[ -d "${HOME}/.local/bin" ]]; then
   path=("${HOME}/.local/bin" $path)
+fi
+
+if [[ -n "$GOPATH" ]]; then
+  path+=("${GOPATH}/bin")
 fi
 
 if [[ "$(uname)" == 'Darwin' ]] \
