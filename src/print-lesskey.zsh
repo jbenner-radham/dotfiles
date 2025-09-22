@@ -10,7 +10,7 @@ set -o pipefail
 # Arguments:
 #   An error message.
 function print-error() {
-  printf '%sError:%s%s\n' "$(tput sgr1)" "${1}" "$(tput sgr0)" >&2
+  printf '%sError: %s%s\n' "$(tput setaf 1)" "${1}" "$(tput sgr0)" >&2
 }
 
 # Print the bold color code for the provided color integer.
