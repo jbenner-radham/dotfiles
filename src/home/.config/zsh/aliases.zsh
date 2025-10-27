@@ -17,6 +17,12 @@ if (( $+commands[batcat] )); then
   alias bat='batcat'
 fi
 
+# Title-Case (alias `decasify` to something I'll remember)
+if (( $+commands[decasify] )); then
+  alias tc='decasify'
+  alias title='decasify'
+fi
+
 # Neovim Man Pager
 if (( $+commands[nvim] )); then
   # Not nicely colorized like `less`, but worth it just for the `gO` command.
