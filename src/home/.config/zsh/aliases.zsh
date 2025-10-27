@@ -32,4 +32,6 @@ fi
 alias ppath='print -l ${path}'
 
 # Wget (run without creating a `${HOME}/.wget-hsts` file)
-alias wget='wget --hsts-file=/dev/null'
+if (( $+commands[wget] )); then
+  alias wget='wget --hsts-file=/dev/null'
+fi
