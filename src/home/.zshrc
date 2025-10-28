@@ -36,23 +36,28 @@ if (( $+commands[go] )); then
 fi
 
 # Add items to the path.
-if [[ -d "${HOME}/.local/bin" ]]; then
+if [[ -d "${HOME}/.local/bin" ]] && (( ! $path[(Ie)${HOME}/.local/bin] )); then
   path=("${HOME}/.local/bin" $path)
 fi
 
-if [[ -n "${CARGO_HOME}" ]]; then
+if [[ -n "${CARGO_HOME}" ]] && (( ! $path[(Ie)${CARGO_HOME}/bin] )); then
   path+=("${CARGO_HOME}/bin")
 fi
 
-if [[ -n "${GOPATH}" ]]; then
+if [[ -n "${GOPATH}" ]] && (( ! $path[(Ie)${GOPATH}/bin] )); then
   path+=("${GOPATH}/bin")
 fi
 
+application_support="${HOME}/Library/Application Support"
+
 if [[ "$(uname)" == 'Darwin' ]] \
-  && [[ -d "${HOME}/Library/Application Support/JetBrains/Toolbox/scripts" ]]
+  && [[ -d "${application_support}/JetBrains/Toolbox/scripts" ]] \
+  && (( ! $path[(Ie)${application_support}/JetBrains/Toolbox/scripts] ))
 then
-  path+=("${HOME}/Library/Application Support/JetBrains/Toolbox/scripts")
+  path+=("${application_support}/JetBrains/Toolbox/scripts")
 fi
+
+unset application_support
 
 export PATH
 
