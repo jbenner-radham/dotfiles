@@ -89,7 +89,7 @@ $sudo\
 $cmd_duration\
 $jobs\
 $battery\
-$fill\
+ $fill \
 $time\
 $status\
 $os\
@@ -296,7 +296,7 @@ symbol = " "
 
 [status]
 disabled = false
-symbol = " "
+symbol = "  "
 
 [sudo]
 format = "[$symbol]($style)"
@@ -309,7 +309,7 @@ symbol = " "
 
 [time]
 disabled = false
-format = "[  $time ]($style)"
+format = "[ $time]($style)"
 time_format = "%I:%M:%S%P"
 # use_12hr = true
 
