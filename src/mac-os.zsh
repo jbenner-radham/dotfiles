@@ -302,6 +302,17 @@ defaults write -g WebContinuousSpellCheckingEnabled -boolean true
 # defaults write com.apple.DiskUtility advanced-image-options -bool true
 
 ###############################################################################
+# TextEdit                                                                    #
+###############################################################################
+
+# Use plain text mode for new documents
+defaults write com.apple.TextEdit RichText -int 0
+
+# Open and save files as UTF-8
+defaults write com.apple.TextEdit PlainTextEncoding -int 4
+defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+
+###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
