@@ -181,6 +181,17 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 # Show the /Volumes folder
 # sudo chflags nohidden /Volumes
 
+# Disable the warning before emptying the Trash
+# defaults write com.apple.finder WarnOnEmptyTrash -bool false
+
+# Empty Trash securely by default
+defaults write com.apple.finder EmptyTrashSecurely -bool true
+
+# Remove Dropbox’s green checkmark icons in Finder
+# file=/Applications/Dropbox.app/Contents/Resources/check.icns
+# [ -e "$file" ] && mv -f "$file" "$file.bak"
+# unset file
+
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
