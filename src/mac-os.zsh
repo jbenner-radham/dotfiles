@@ -4,6 +4,7 @@
 # Additional settings from:
 #  - https://gitlab.com/dnsmichi/dotfiles/-/blob/main/.macos
 #  - https://medium.com/@laclementine/dotfile-for-mac-efe082ad0d6a
+#  - https://github.com/sapegin/dotfiles/blob/master/setup/osx.sh
 
 # You can view the current settings with `defaults read`.
 
@@ -207,6 +208,19 @@ defaults write com.apple.finder EmptyTrashSecurely -bool true
 
 # Don’t show recent applications in Dock
 defaults write com.apple.dock show-recents -bool false
+
+###############################################################################
+# Misc                                                                        #
+###############################################################################
+
+# Check spelling as you type
+defaults write -g CheckSpellingWhileTyping -boolean true
+
+# Enable continuous spell checking everywhere (don't know what it means)
+defaults write -g WebContinuousSpellCheckingEnabled -boolean true
+
+# Disable Notification Center
+# launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist
 
 ###############################################################################
 # Safari & WebKit                                                             #
