@@ -274,6 +274,13 @@ defaults write -g WebContinuousSpellCheckingEnabled -boolean true
 # defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 
 ###############################################################################
+# Terminal                                                                    #
+###############################################################################
+
+# Only use UTF-8 in Terminal.app
+# defaults write com.apple.terminal StringEncodings -array 4
+
+###############################################################################
 # iTerm2                                                                      #
 ###############################################################################
 
