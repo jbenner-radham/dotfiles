@@ -313,6 +313,53 @@ defaults write com.apple.TextEdit PlainTextEncoding -int 4
 defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
 
 ###############################################################################
+# Power                                                                       #
+###############################################################################
+
+# Battery
+
+# Computer sleep: 10 min
+# sudo pmset -b sleep 10
+
+# Display sleep: 5 min
+# sudo pmset -b displaysleep 5
+
+# Put the hard disk(s) to sleep when possible: 10 min
+# sudo pmset -b disksleep 10
+
+# Slightly dim the display when using this power source
+# sudo pmset -b lessbright 1
+
+# Automatically reduce brightness before display goes to sleep
+# sudo pmset -b halfdim 1
+
+# Restart automatically if the computer freezes
+# sudo pmset -b panicrestart 15
+
+# Power Adapter
+
+# Computer sleep: 30 min
+# sudo pmset -c sleep 30
+
+# Display sleep: 10 min
+# sudo mset -c displaysleep 10
+
+# Put the hard disk(s) to sleep when possible: 10 min
+# sudo pmset -c disksleep 10
+
+# Wake for network access
+# sudo pmset -c womp 0
+
+# Automatically reduce brightness before display goes to sleep
+# sudo pmset -c halfdim 1
+
+# Start up automatically after a power failure
+# sudo pmset -c autorestart 1
+
+# Restart automatically if the computer freezes
+# sudo pmset -c panicrestart 15
+
+###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
