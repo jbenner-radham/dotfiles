@@ -294,6 +294,14 @@ defaults write -g WebContinuousSpellCheckingEnabled -boolean true
 # defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
 ###############################################################################
+# Disk Utility                                                                #
+###############################################################################
+
+# Enable the debug menu
+# defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
+# defaults write com.apple.DiskUtility advanced-image-options -bool true
+
+###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
