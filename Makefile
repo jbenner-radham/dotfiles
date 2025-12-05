@@ -26,4 +26,9 @@ endif
 lint:
 	@shellcheck src/home/.local/bin/*
 
-.PHONY: install install-darwin-only install-lesskey install-linux-only lint
+.PHONY: default \
+	install \
+	install-darwin-only \
+	install-lesskey \
+	install-linux-only \
+	lint
