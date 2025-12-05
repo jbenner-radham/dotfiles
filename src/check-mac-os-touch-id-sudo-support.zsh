@@ -97,9 +97,9 @@ function main() {
   if [[ -n $MATCH ]]; then
     local prompt=$(
       printf '%s%s %s' \
-      '_input?' \
-      'About to enable Touch ID support for `sudo` in `sudo_local`.' \
-      'Do you wish to proceed? Press (Y/y) to continue: '
+        '_input?' \
+        'About to enable Touch ID support for `sudo` in `sudo_local`.' \
+        'Do you wish to proceed? Press (Y/y) to continue: '
     )
 
     if ! read -q $prompt; then
