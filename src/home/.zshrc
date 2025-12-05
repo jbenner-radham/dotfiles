@@ -108,9 +108,10 @@ fi
 if [[ "${ENABLE_COWSAY_GREETING}" == true ]] \
   && [[ "${IN_EDITOR_TERMINAL}" == false ]] \
   && (( $+commands[cowsay] )) \
-  && (( $+commands[fortune] ))
+  && (( $+commands[fortune] )) \
+  && (( $+commands[lolcat] ))
 then
-  cowsay "$(fortune)"
+  cowsay "$(fortune)" | lolcat
 fi
 
 # Command Line Completion
