@@ -1,8 +1,15 @@
+tap "orangekame3/tap"
 tap "oven-sh/bun"
 tap "vet-run/vet"
 
+# Run your GitHub Actions locally
+brew "act"
+
 # Asciicast to GIF converter
 brew "agg"
+
+# Catch insensitive, inconsiderate writing
+brew "alexjs"
 
 # Record and share terminal sessions
 brew "asciinema"
@@ -16,6 +23,9 @@ brew "bat"
 # Bash scripts that integrate bat with various command-line tools
 brew "bat-extras"
 
+# Container runtimes on MacOS (and Linux) with minimal setup
+brew "colima"
+
 # Apjanke's fork of the classic cowsay project
 brew "cowsay"
 
@@ -24,6 +34,18 @@ brew "decasify"
 
 # Load/unload environment variables based on $PWD
 brew "direnv"
+
+# Pack, ship and run any application as a lightweight container
+brew "docker"
+
+# Docker CLI plugin for extended build capabilities with BuildKit
+brew "docker-buildx"
+
+# Isolated development environments using Docker
+brew "docker-compose"
+
+# Command-line DNS client
+brew "doge"
 
 # Modern, maintained replacement for ls
 brew "eza"
@@ -48,6 +70,9 @@ brew "httpie"
 
 # Pager program similar to more
 brew "less"
+
+# Rainbows and unicorns in your console!
+brew "lolcat"
 
 # Collection of tools that nobody wrote when UNIX was young
 brew "moreutils"
@@ -120,6 +145,9 @@ brew "wget2"
 
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
+
+# paclear is a clear command with PAC-MAN animation
+brew "orangekame3/tap/paclear"
 
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
