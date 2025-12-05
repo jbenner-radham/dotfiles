@@ -30,6 +30,12 @@ Install the Homebrew packages:
 brew bundle install --file ./src/home/.config/homebrew/Brewfile
 ```
 
+Configure Docker plugins from Homebrew:
+
+```shell
+./src/configure-docker-brew-plugins.js
+```
+
 Install the dotfiles:
 
 > [!NOTE]
