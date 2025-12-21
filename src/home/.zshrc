@@ -105,13 +105,15 @@ fi
 # ==================
 
 # A Little Fun
-if [[ "${ENABLE_COWSAY_GREETING}" == true ]] \
+if [[ "${ENABLE_WHIMSICAL_GREETING}" == true ]] \
   && [[ "${IN_EDITOR_TERMINAL}" == false ]] \
-  && (( $+commands[cowsay] )) \
-  && (( $+commands[fortune] )) \
+  # && (( $+commands[cowsay] )) \
+  && (( $+commands[figlet] )) \
+  # && (( $+commands[fortune] )) \
   && (( $+commands[lolcat] ))
 then
-  cowsay "$(fortune)" | lolcat
+  # cowsay "$(fortune)" | lolcat
+  figlet -f isometric4 'Hello World' | lolcat
 fi
 
 # Command Line Completion

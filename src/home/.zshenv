@@ -7,8 +7,8 @@
 # Whimsical Greeting
 # ==================
 
-# Display cowsay greeting with fortune quotes in the shell.
-export ENABLE_COWSAY_GREETING=true
+# Display a fun greeting in the shell at the start of a new session.
+export ENABLE_WHIMSICAL_GREETING=true
 
 # Eza Configuration
 # =================

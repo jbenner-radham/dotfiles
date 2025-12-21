@@ -53,6 +53,9 @@ brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 
+# Banner-like program prints strings as ASCII art
+brew "figlet"
+
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
 
