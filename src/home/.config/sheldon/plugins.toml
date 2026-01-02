@@ -38,6 +38,18 @@ inline = '''
 local = "~/.config/zsh"
 use = ["*.zsh"]
 
+[plugins.nvm]
+inline = '''
+  if [[ -n "${NVM_DIR:-}" ]] && [[ -d "${NVM_DIR}" ]]; then
+    if [[ -s "${NVM_DIR}/nvm.sh" ]]; then
+      zsh-defer source "${NVM_DIR}/nvm.sh"
+    fi
+
+    if [[ -s "${NVM_DIR}/bash_completion" ]]; then
+      zsh-defer source "${NVM_DIR}/bash_completion"
+    fi
+  fi'''
+
 [plugins.ohmyzsh]
 github = "ohmyzsh/ohmyzsh"
 dir = "lib"

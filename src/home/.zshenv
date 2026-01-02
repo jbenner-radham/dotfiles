@@ -87,6 +87,12 @@ export ZSH_CACHE_DIR="${XDG_CACHE_HOME}/zsh"
 # Define path to `Brewfile` for Homebrew.
 export HOMEBREW_BUNDLE_FILE="${XDG_CONFIG_HOME}/homebrew/Brewfile"
 
+# NVM Configuration
+# =================
+if [[ -d "${XDG_CONFIG_HOME}/nvm" ]]; then
+  export NVM_DIR="${XDG_CONFIG_HOME}/nvm"
+fi
+
 # Less Configuration
 # ==================
 

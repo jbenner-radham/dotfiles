@@ -117,6 +117,7 @@ fi
 # =======================
 
 # Add Homebrew completions to `$FPATH`.
+# TODO: Look into simplifying this by using `brew --prefix`.
 if [[ "$(uname)" == 'Darwin' ]] \
   && [[ -d /opt/homebrew/share/zsh/site-functions ]] \
   && (( ! $fpath[(Ie)/opt/homebrew/share/zsh/site-functions] ))
