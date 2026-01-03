@@ -48,32 +48,32 @@ inline = '''
     if [[ -s "${NVM_DIR}/bash_completion" ]]; then
       zsh-defer source "${NVM_DIR}/bash_completion"
     fi
-  fi
 
-  # Based upon: https://github.com/nvm-sh/nvm#zsh
-  autoload -U add-zsh-hook
+    # Based upon: https://github.com/nvm-sh/nvm#zsh
+    autoload -U add-zsh-hook
 
-  load-nvmrc() {
-    local nvmrc_path
-    nvmrc_path="$(nvm_find_nvmrc)"
+    load-nvmrc() {
+      local nvmrc_path
+      nvmrc_path="$(nvm_find_nvmrc)"
 
-    if [ -n "$nvmrc_path" ]; then
-      local nvmrc_node_version
-      nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+      if [ -n "$nvmrc_path" ]; then
+        local nvmrc_node_version
+        nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
 
-      if [[ "${nvmrc_node_version}" == 'N/A' ]]; then
-        nvm install
-      elif [[ "${nvmrc_node_version}" != "$(nvm version)" ]]; then
-        nvm use
+        if [[ "${nvmrc_node_version}" == 'N/A' ]]; then
+          nvm install
+        elif [[ "${nvmrc_node_version}" != "$(nvm version)" ]]; then
+          nvm use
+        fi
+      elif [[ "$(nvm version)" != "$(nvm version system)" ]]; then
+        print 'No `.nvmrc` found in the current path, reverting nvm back to the system version of Node.js'
+        nvm use system
       fi
-    elif [[ "$(nvm version)" != "$(nvm version system)" ]]; then
-      print 'No `.nvmrc` found in the current path, reverting nvm back to the system version of Node.js'
-      nvm use system
-    fi
-  }
+    }
 
-  zsh-defer add-zsh-hook chpwd load-nvmrc
-  zsh-defer load-nvmrc'''
+    zsh-defer add-zsh-hook chpwd load-nvmrc
+    zsh-defer load-nvmrc
+  fi'''
 
 [plugins.ohmyzsh]
 github = "ohmyzsh/ohmyzsh"
