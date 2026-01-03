@@ -22,7 +22,8 @@ function print-error() {
 #   bold-color-code 2
 #   >>> ^[[1;32m
 function bold-color-code() {
-  zmodload zsh/pcre
+  setopt LOCAL_OPTIONS # Or `emulate -L zsh`?
+  setopt REMATCH_PCRE
 
   if (( # != 1 )); then
     print-error 'Exactly one color code argument is required.'
@@ -35,19 +36,14 @@ function bold-color-code() {
   local bold_digit
   local color_digit
 
-  pcre_compile -smx $pattern
-  pcre_match -b -- $bold
-
-  if (( ? == 0 )); then
+  if [[ "${bold}" =~ "${pattern}" ]]; then
     bold_digit=$MATCH
   else
     print-error 'No match found.'
   fi
 
-  pcre_match -b -- $color
-
-  if (( ? == 0 )); then
-    color_digit=$MATCH
+  if [[ "${color}" =~ "${pattern}" ]]; then
+      color_digit=$MATCH
   else
     print-error 'No match found.'
   fi
@@ -64,7 +60,8 @@ function bold-color-code() {
 #   bold-underline-color-code 2
 #   >>> ^[[1;4;32m
 function bold-underline-color-code() {
-  zmodload zsh/pcre
+  setopt LOCAL_OPTIONS # Or `emulate -L zsh`?
+  setopt REMATCH_PCRE
 
   if (( # != 1 )); then
     print-error 'Exactly one color code argument is required.'
@@ -79,26 +76,19 @@ function bold-underline-color-code() {
   local underline_digit
   local color_digit
 
-  pcre_compile -smx $pattern
-  pcre_match -b -- $bold
-
-  if (( ? == 0 )); then
-    bold_digit=$MATCH
+  if [[ "${bold}" =~ "${pattern}" ]]; then
+      bold_digit=$MATCH
   else
     print-error 'No match found.'
   fi
 
-  pcre_match -b -- $underline
-
-  if (( ? == 0 )); then
+  if [[ "${underline}" =~ "${pattern}" ]]; then
     underline_digit=$MATCH
   else
     print-error 'No match found.'
   fi
 
-  pcre_match -b -- $color
-
-  if (( ? == 0 )); then
+  if [[ "${color}" =~ "${pattern}" ]]; then
     color_digit=$MATCH
   else
     print-error 'No match found.'
