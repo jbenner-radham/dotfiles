@@ -10,7 +10,7 @@
       "Bash(pnpm test)"
     ],
     "deny": [
-      "Read(./.env)"
+      "Read(.env)"
     ]
   }
 }
