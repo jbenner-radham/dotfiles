@@ -1,0 +1,16 @@
+{
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "permissions": {
+    "allow": [
+      "Bash(pnpm run lint)",
+      "Bash(pnpm run lint:*)",
+      "Bash(pnpm test)"
+    ],
+    "deny": [
+      "Read(./.env)"
+    ]
+  }
+}
