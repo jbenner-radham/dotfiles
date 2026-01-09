@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
+import childProcess from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import process from 'node:process';
 
 const configFilepath = path.join(os.homedir(), '.docker', 'config.json');
-const pluginsFilepath = os.type() === 'Darwin'
-  ? '/opt/homebrew/lib/docker/cli-plugins'
-  : '/home/linuxbrew/.linuxbrew/lib/docker/cli-plugins';
+const brewPrefix = childProcess.execSync('brew --prefix').toString();
+const pluginsFilepath = path.join(brewPrefix, 'lib', 'docker', 'cli-plugins');
 
 if (!fs.existsSync(configFilepath)) {
   console.error('No Docker config file found.');
