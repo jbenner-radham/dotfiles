@@ -7,7 +7,7 @@ import path from 'node:path';
 import process from 'node:process';
 
 const configFilepath = path.join(os.homedir(), '.docker', 'config.json');
-const brewPrefix = childProcess.execSync('brew --prefix').toString();
+const brewPrefix = childProcess.execSync('brew --prefix').toString().trim();
 const pluginsFilepath = path.join(brewPrefix, 'lib', 'docker', 'cli-plugins');
 
 if (!fs.existsSync(configFilepath)) {
