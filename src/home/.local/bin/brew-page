@@ -75,7 +75,7 @@ function main() {
     opener='xdg-open'
   fi
 
-  if [[ -z "${opener}" ]]; then
+  if [[ -z "${opener:-}" ]]; then
     print_error 'Cannot determine the command to open a webpage.'
     exit 1
   fi
@@ -97,7 +97,7 @@ function main() {
     filter='.formulae[0].homepage'
   fi
 
-  if [[ -z "${filter}" ]]; then
+  if [[ -z "${filter:-}" ]]; then
     print_error 'Cannot determine a filter to lookup the package homepage.'
     exit 1
   fi
@@ -109,7 +109,7 @@ function main() {
     exit 1
   fi
 
-  printf '%s' "${url}" | xargs "${opener}"
+  "${opener}" "${url}"
 }
 
 main "${@}"
