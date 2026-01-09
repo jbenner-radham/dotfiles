@@ -24,10 +24,10 @@ set -o pipefail
 # set -o xtrace
 
 function main() {
-  local opener
-  local bold
-  local red
-  local reset
+  local opener=''
+  local bold=''
+  local red=''
+  local reset=''
 
   # Enable text styling only if the following conditions are met:
   #  1. Standard output (file descriptor 1) is connected to the terminal.
