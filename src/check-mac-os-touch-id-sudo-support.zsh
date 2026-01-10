@@ -94,7 +94,7 @@ function main() {
     pcre_match $line && true
   done
 
-  if [[ -n $MATCH ]]; then
+  if [[ -n ${MATCH:-} ]]; then
     local prompt=$(
       printf '%s%s %s' \
         '_input?' \
