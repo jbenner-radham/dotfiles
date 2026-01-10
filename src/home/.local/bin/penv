@@ -35,7 +35,6 @@ function main() {
     filtered+=("${line}")
   done
 
-
   # Pipe to `cat -v` to display non-printing characters so they are visible.
   #
   # We need to reference this variable as an array so we can't quote it.
