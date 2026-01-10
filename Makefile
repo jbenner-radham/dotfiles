@@ -26,9 +26,17 @@ endif
 lint:
 	@shellcheck src/home/.local/bin/*
 
+test:
+	@zsh --no-exec **/*.zsh
+	@zsh --no-exec src/home/.zprofile
+	@zsh --no-exec src/home/.zshenv
+	@zsh --no-exec src/home/.zshrc
+	@zsh --no-exec src/home/.local/bin/*
+
 .PHONY: default \
 	install \
 	install-darwin-only \
 	install-lesskey \
 	install-linux-only \
-	lint
+	lint \
+	test
