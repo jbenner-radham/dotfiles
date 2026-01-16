@@ -1,6 +1,6 @@
 # vim: set noexpandtab:
 
-UNAME = $(shell uname)
+UNAME := $(shell uname)
 
 default: lint
 
@@ -10,7 +10,7 @@ install: test install-darwin-only install-lesskey install-linux-only
 
 install-darwin-only:
 ifeq ($(UNAME), Darwin)
-		@rsync --mkpath --recursive --times --verbose --verbose \
+		@rsync --mkpath --recursive --times --verbose \
 			src/home/.config/Code "${HOME}/Library/Application Support"
 endif
 
@@ -19,7 +19,7 @@ install-lesskey:
 
 install-linux-only:
 ifeq ($(UNAME), Linux)
-		@rsync --mkpath --recursive --times --verbose --verbose \
+		@rsync --mkpath --recursive --times --verbose \
 			src/home/.config/Code "${HOME}/.config"
 endif
 
