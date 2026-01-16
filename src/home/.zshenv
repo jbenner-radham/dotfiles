@@ -110,8 +110,7 @@ export EDITOR='vim'
 
 # Determine if we're operating within an editor terminal.
 if [[ "${TERMINAL_EMULATOR}" == 'JetBrains-JediTerm' ]] \
-  || [[ "${TERM_PROGRAM}" == 'Jetbrains.Fleet' ]] \
-  || [[ "${TERM_PROGRAM}" == 'vscode' ]]
+  || [[ "${TERM_PROGRAM}" == (vscode|zed) ]]
 then
   export IN_EDITOR_TERMINAL=true
 else
