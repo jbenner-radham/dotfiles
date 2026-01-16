@@ -4,7 +4,7 @@ UNAME = $(shell uname)
 
 default: lint
 
-install: install-darwin-only install-lesskey install-linux-only
+install: test install-darwin-only install-lesskey install-linux-only
 	@rsync --exclude '.keep' --exclude '.config/Code' --mkpath --recursive \
 		--times --verbose src/home/ "${HOME}"
 
