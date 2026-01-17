@@ -1,6 +1,12 @@
 # vim: set noexpandtab:
 
 UNAME := $(shell uname)
+ZSH_SCRIPT_GLOBS := $(shell find . -name '*.zsh' -type f -not -path '*/\.git/*') \
+	src/home/.zprofile \
+	src/home/.zshenv \
+	src/home/.zshrc \
+	src/home/.local/bin/*
+ZSH_SCRIPT_PATHS := $(foreach glob,$(ZSH_SCRIPT_GLOBS),$(wildcard $(glob)))
 
 default: lint
 
@@ -10,8 +16,8 @@ install: test install-darwin-only install-lesskey install-linux-only
 
 install-darwin-only:
 ifeq ($(UNAME), Darwin)
-		@rsync --mkpath --recursive --times --verbose \
-			src/home/.config/Code "${HOME}/Library/Application Support"
+	@rsync --mkpath --recursive --times --verbose \
+		src/home/.config/Code "${HOME}/Library/Application Support"
 endif
 
 install-lesskey:
@@ -19,19 +25,15 @@ install-lesskey:
 
 install-linux-only:
 ifeq ($(UNAME), Linux)
-		@rsync --mkpath --recursive --times --verbose \
-			src/home/.config/Code "${HOME}/.config"
+	@rsync --mkpath --recursive --times --verbose \
+		src/home/.config/Code "${HOME}/.config"
 endif
 
 lint:
 	@shellcheck src/home/.local/bin/*
 
 test:
-	@zsh --no-exec **/*.zsh
-	@zsh --no-exec src/home/.zprofile
-	@zsh --no-exec src/home/.zshenv
-	@zsh --no-exec src/home/.zshrc
-	@zsh --no-exec src/home/.local/bin/*
+	@for path in $(ZSH_SCRIPT_PATHS); do zsh --no-exec "$${path}"; done
 
 .PHONY: default \
 	install \
