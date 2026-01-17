@@ -67,11 +67,13 @@ function main() {
     exit 1
   fi
 
+  local -r os="$(uname)"
+
   # Since Shellcheck doesn't support Zsh it doesn't recognize `$+commands`.
   # shellcheck disable=SC2154
-  if [[ "$(uname)" == 'Darwin' ]] && (( $+commands[open] )); then
+  if [[ "${os}" == 'Darwin' ]] && (( $+commands[open] )); then
     opener='open'
-  elif [[ "$(uname)" == 'Linux' ]] && (( $+commands[xdg-open] )); then
+  elif [[ "${os}" == 'Linux' ]] && (( $+commands[xdg-open] )); then
     opener='xdg-open'
   fi
 
@@ -80,29 +82,13 @@ function main() {
     exit 1
   fi
 
-  local casks_length
-  local filter
-  local formulae_length
   local -r json="$(brew info --json=v2 "${1}")"
 
   # We use `printf` instead of `echo` here because the output from `echo` can
   # result in parse errors for `jq` (e.g., when querying pnpm).
-  casks_length="$(printf '%s' "${json}" | jq '.casks | length')"
-  formulae_length="$(printf '%s' "${json}" | jq '.formulae | length')"
-
-  # Use arithmetic evaluation to check lengths. Empty strings are cast to 0.
-  if (( casks_length > 0 )); then
-    filter='.casks[0].homepage'
-  elif (( formulae_length > 0 )); then
-    filter='.formulae[0].homepage'
-  fi
-
-  if [[ -z "${filter:-}" ]]; then
-    print_error 'Cannot determine a filter to lookup the package homepage.'
-    exit 1
-  fi
-
-  local -r url="$(printf '%s' "${json}" | jq --raw-output "${filter}")"
+  local -r url="$(printf '%s' "${json}" | jq --raw-output '
+    .casks?.[0]?.homepage // .formulae?.[0]?.homepage
+  ')"
 
   if [[ -z "${url}" ]]; then
     print_error 'Cannot retrieve the package homepage URL.'
