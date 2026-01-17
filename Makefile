@@ -1,12 +1,11 @@
 # vim: set noexpandtab:
 
 UNAME := $(shell uname)
-ZSH_SCRIPT_GLOBS := $(shell find . -name '*.zsh' -type f -not -path '*/\.git/*') \
-	src/home/.zprofile \
+ZSH_SCRIPT_PATHS := src/home/.zprofile \
 	src/home/.zshenv \
 	src/home/.zshrc \
-	src/home/.local/bin/*
-ZSH_SCRIPT_PATHS := $(foreach glob,$(ZSH_SCRIPT_GLOBS),$(wildcard $(glob)))
+	$(wildcard src/home/.local/bin/*) \
+	$(shell find . -path './.git' -prune -or -name '*.zsh' -type f -print)
 
 default: lint
 
