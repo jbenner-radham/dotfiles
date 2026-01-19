@@ -40,7 +40,7 @@ function main() {
   fi
 
   print_error() {
-    printf '%sError:%s %s\n' "${red}" "${reset}" "${@}" >&2
+    printf '%sError:%s %s\n' "${red}" "${reset}" "${*}" >&2
   }
 
   if (( # == 0 )); then
@@ -82,12 +82,20 @@ function main() {
     exit 1
   fi
 
-  local -r json="$(brew info --json=v2 "${1}")"
+  local json
+  local url
+
+  # Separate variable declaration and assignment because when they are done
+  # jointly it will swallow the exit code. In this case if you search for a
+  # formula that doesn't exist `brew` exits with an error code. But, the
+  # error isn't caught if you do declaration and assignment together. So we
+  # split it out so the script can die if `brew` exits with an error code.
+  json="$(brew info --json=v2 "${1}")"
 
   # We use `printf` instead of `echo` here because the output from `echo` can
   # result in parse errors for `jq` (e.g., when querying pnpm).
-  local -r url="$(printf '%s' "${json}" | jq --raw-output '
-    .casks?.[0]?.homepage // .formulae?.[0]?.homepage
+  url="$(printf '%s' "${json}" | jq --raw-output '
+    .casks?.[0]?.homepage // .formulae?.[0]?.homepage // empty
   ')"
 
   if [[ -z "${url}" ]]; then
