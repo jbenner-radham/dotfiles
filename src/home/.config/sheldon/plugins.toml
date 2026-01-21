@@ -38,41 +38,10 @@ inline = '''
 local = "~/.config/zsh"
 use = ["*.zsh"]
 
-[plugins.nvm]
+[plugins.fnm]
 inline = '''
-  if [[ -n "${NVM_DIR:-}" ]] && [[ -d "${NVM_DIR}" ]]; then
-    if [[ -s "${NVM_DIR}/nvm.sh" ]]; then
-      zsh-defer source "${NVM_DIR}/nvm.sh"
-    fi
-
-    if [[ -s "${NVM_DIR}/bash_completion" ]]; then
-      zsh-defer source "${NVM_DIR}/bash_completion"
-    fi
-
-    # Based upon: https://github.com/nvm-sh/nvm#zsh
-    autoload -U add-zsh-hook
-
-    load-nvmrc() {
-      local nvmrc_path
-      nvmrc_path="$(nvm_find_nvmrc)"
-
-      if [ -n "$nvmrc_path" ]; then
-        local nvmrc_node_version
-        nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-        if [[ "${nvmrc_node_version}" == 'N/A' ]]; then
-          nvm install
-        elif [[ "${nvmrc_node_version}" != "$(nvm version)" ]]; then
-          nvm use
-        fi
-      elif [[ "$(nvm version)" != "$(nvm version system)" ]]; then
-        print 'No `.nvmrc` found in the current path, reverting nvm back to the system version of Node.js'
-        nvm use system
-      fi
-    }
-
-    zsh-defer add-zsh-hook chpwd load-nvmrc
-    zsh-defer load-nvmrc
+  if (( $+commands[fnm] )); then
+    eval "$(fnm env --log-level=error --use-on-cd --version-file-strategy=recursive --shell=zsh)"
   fi'''
 
 [plugins.ohmyzsh]
