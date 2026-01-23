@@ -3,13 +3,13 @@ Coding & Markup Style
 
 ### Universal Guidelines
 
-- If a project has an `.editorconfig` file read it and apply any relevant formatting rules to your context.
+- If a project has an `.editorconfig` file, read it and apply any relevant formatting rules to your context.
   - Wildcard sections apply to all files (e.g., `[*]`).
   - More specific section globs inherit from the wildcard sections configuration (e.g., `[*.zsh]` would inherit from `[*]` for a file named `example.zsh`).
   - If `max_line_length` is set, treat it as a strong preference and not a hard requirement. Specifically if long URLs make a line exceed that length it is acceptable.
-- If you are unsure about a style issue ask clarifying questions.
+- If you are unsure about a style issue, ask clarifying questions.
 - Prefer readability over "clever" code or compact markdown.
-- Code should be concise as possible without sacrificing readability.
+- Code should be as concise as possible without sacrificing readability.
 - Write self-documenting code and use comments sparingly. When we do write them, make sure they're for explaining the "why" or the context behind the function, method, etc.
 - For files with shebangs always use `/usr/bin/env` (e.g., `#!/usr/bin/env node` for Node.js scripts and `#!/usr/bin/env zsh` for Zsh scripts).
 
@@ -17,18 +17,27 @@ Coding & Markup Style
 
 - Prefer a functional programming style.
   - Prefer immutable data unless using it would make code significantly more verbose or less performant.
-  - Use the `map`, `reduce`, `forEach`, `filter`, etc. array methods over `for` loops.
+  - Use functional array methods (e.g., `map`, `reduce`, `filter`, etc.) instead of `for` loops. Use `forEach` only when side effects are intentional.
 - Use descriptive names and NEVER use one letter names (e.g., "error" instead of "e").
 - Functions should take the form of `<verb><noun>` (e.g., `fetchPosts` instead of `posts`).
 - Variables should be descriptive nouns (e.g., `postCount`).
 - Utilize destructuring where possible.
-- Prefer using the nullish coalescing operator (`??`) over the logical or operator (`||`);
+- Prefer using the nullish coalescing operator (`??`) over the logical or operator (`||`).
 - Use the optional chaining (`?.`) operator to traverse object properties or call a function or method.
 - Use ternary expressions (`condition ? valueIfTrue : valueIfFalse`) over simple `if..else` statements.
+- Avoid using nested ternary expressions.
 - Prefer multiple small functions to a single large function.
 - Public API members should be documented by [JSDoc](https://jsdoc.app/) for JavaScript and [TSDoc](https://tsdoc.org/) for TypeScript.
 - Prefer `async/await` over `.then()` chains.
-- Use `node:` protocol prefix for built-in modules in Node.js (e.g., `import path from 'node:path'`).
+- Use `node:` protocol prefix for built-in modules in Node.js.
+
+  ```typescript
+  // Do this:
+  import path from 'node:path';
+
+  // Not this:
+  import path from 'path';
+  ```
 
 ### Markdown
 
@@ -48,6 +57,47 @@ Coding & Markup Style
 - HTML can be used sparingly when it would enhance the semantics of a document (e.g., use `<dl>` for a description list or `<abbr>` (with the `title` attribute like so: `<abbr title="JavaScript Object Notation">JSON</abbr>`) for abbreviations).
 - Hyperlink to other sections when referencing them.
 - Lists should be preceded by a single empty line between them and their preceding content.
+- If you have more than one hyperlink to the same URL make it a link reference definition.
+
+  ```markdown
+  <!-- Do this: -->
+  Go to [example]. If you're feeling redundant go to [example] again.
+
+  [EXAMPLE]: http://www.example.com/
+
+  <!-- Not this: -->
+  Go to [example](http://www.example.com/). If you're feeling redundant go to [example](http://www.example.com/) again.
+  ```
+- If you have any link reference definitions in your document they should all be grouped together at the bottom of the document and have uppercase link labels.
+- When placing shortcut reference links keep in mind that their link labels do not have to have the same casing as the corresponding link reference definition. So conform to the proper casing for the context in which the shortcut reference link was inserted.
+
+  ```markdown
+  <!-- Do this: -->
+  Here is the [example].
+
+  [EXAMPLE]: http://www.example.com/
+
+  <!-- Or this: -->
+  We capitalize this shortcut reference link to [Node] since it's a formal name.
+
+  [NODE]: https://nodejs.org/
+
+  <!-- Not this: -->
+  Here is the [EXAMPLE].
+
+  [EXAMPLE]: http://www.example.com/
+  ```
+- If a file is named `CHANGELOG.md` and has the following in its head (allowing for version variations of the two URLs present) make sure any changes to it adhere to the [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) spec.
+
+  ```markdown
+  Changelog
+  =========
+
+  All notable changes to this project will be documented in this file.
+
+  The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+  and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+  ```
 
 ### Shell (Zsh, Bash, POSIX Shell, etc.)
 
@@ -61,8 +111,47 @@ Coding & Markup Style
 
 - A file is Zsh if it has the relevant shebang (e.g., `#!/usr/bin/env zsh`), a Zsh file extension (e.g., `script.zsh`), or is an explicit Zsh config file (e.g., `.zprofile`, `.zshenv`, `.zshrc`).
 - Prefer using Zsh specific features to plain POSIX shell.
-- Never write code outside of a function. If code doesn't need to be manually called and should be auto-executed then use an anonymous function as it provides scoping (e.g., `function { ... }`).
+- Never write code outside of a function. If code doesn't need to be manually called and should be auto-executed then use an anonymous function as it provides scoping.
+
+  ```shell
+  # Do this:
+  function {
+    print 'Hello world!'
+  }
+
+  # Not this:
+  print 'Hello world!'
+  ```
 - All variables should be locally scoped.
-- Where applicable make variables read only. Don't do it where it would be problematic. For instance if it would "swallow" the exit code and not catch errors (e.g., `local -r example="$(curl http://www.example.com/)"`).
-- For variables that have array tied special variants (e.g., `$PATH` and `$FPATH`) prefer using those (e.g., `path+=('/path/to/source')` instead of `PATH="${PATH}:/path/to/source`).
-- When adding items to the path or fpath ensure that they are not already present (e.g., `if (( ! $path[(Ie)/path/to/source] )); then path+=(/path/to/source); fi`).
+- Where applicable make variables read only. Don't do it where it would be problematic. For instance if it would "swallow" the exit code and not catch errors.
+
+  ```shell
+  # Do this:
+  local good_example
+
+  good_example="$(curl http://www.example.com/)"
+
+
+  # Not this:
+  local -r bad_example="$(curl http://www.example.com/)"
+  ```
+- For variables that have array tied special variants (e.g., `$PATH` and `$FPATH`) prefer using those.
+
+  ```shell
+  # Do this:
+  path+=('/path/to/source')
+
+  # Not this:
+  PATH="${PATH}:/path/to/source"
+  ```
+- When adding items to the `path` or `fpath` ensure that they are not already present.
+
+  ```shell
+  # Do this:
+  if (( ! $path[(Ie)/path/to/source] )); then
+    path+=(/path/to/source)
+  fi
+
+  # Not this:
+  path+=(/path/to/source)
+  ```
