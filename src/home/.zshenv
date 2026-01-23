@@ -34,6 +34,7 @@ fi
 # macOS Configuration
 # ===================
 
+# TODO: Use `$OSTYPE` instead or move this check to `.zshrc`.
 if [[ "$(uname)" == 'Darwin' ]]; then
   # Disable Apple's "Save/Restore Shell State" feature for `Terminal.app`. This
   # prevents writing to `$HOME/.zsh_sessions` and is unnecessary if the
