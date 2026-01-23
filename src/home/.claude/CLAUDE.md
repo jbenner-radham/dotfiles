@@ -15,6 +15,7 @@ Coding & Markup Style
 
 ### JavaScript & TypeScript
 
+- If a project has a [Prettier](https://prettier.io/) configuration (see [here](https://prettier.io/docs/configuration) for reference) abide by its formatting rules. Don't forget to account for the configuration defaults as well if a configuration parameter is not explicitly set in the project.
 - Prefer a functional programming style.
   - Prefer immutable data unless using it would make code significantly more verbose or less performant.
   - Use functional array methods (e.g., `map`, `reduce`, `filter`, etc.) instead of `for` loops. Use `forEach` only when side effects are intentional.
