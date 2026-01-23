@@ -98,6 +98,24 @@ Coding & Markup Style
   - **Hello**: World
   ````
 - Use Setext headings for level one and two headings and ATX headings for any other level.
+
+  ```markdown
+  <!-- Do this: -->
+  Heading One
+  ===========
+
+  Heading Two
+  -----------
+
+  ### Heading Three
+
+  <!-- Not this: -->
+  # Heading One
+
+  ## Heading Two
+
+  ### Heading Three
+  ```
 - Use a hyphen ("-") for bullet list markers.
 
   ```markdown
