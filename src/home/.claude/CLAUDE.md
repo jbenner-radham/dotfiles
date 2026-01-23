@@ -44,7 +44,7 @@ Coding & Markup Style
 - For code samples use fenced code blocks with an info string where applicable.
   - Use the long form over the short form for info strings (e.g., "typescript" instead of "ts").
   - Only use info strings supported by [linguist](https://github.com/github-linguist/linguist).
-  - Since Zsh does not have a dedicated info string use either "shell" or "sh-session", whichever is more applicable.
+  - Since Zsh does not have a dedicated info string use either "shell" (e.g., to represent code in a script) or "sh-session" (e.g., to represent an interactive shell session), whichever is more applicable.
 - HTML can be used sparingly when it would enhance the semantics of a document (e.g., use `<dl>` for a description list or `<abbr>` (with the `title` attribute like so: `<abbr title="JavaScript Object Notation">JSON</abbr>`) for abbreviations).
 - Hyperlink to other sections when referencing them.
 - Lists should be preceded by a single empty line between them and their preceding content.
