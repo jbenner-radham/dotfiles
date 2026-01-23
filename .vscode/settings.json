@@ -79,6 +79,7 @@
     "rsupm",
     "SAVEHIST",
     "setaf",
+    "setext",
     "setopt",
     "shellcheck",
     "shellenv",
