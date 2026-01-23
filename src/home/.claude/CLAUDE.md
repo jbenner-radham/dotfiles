@@ -24,7 +24,39 @@ Coding & Markup Style
 - Utilize destructuring where possible.
 - Prefer using the nullish coalescing operator (`??`) over the logical or operator (`||`).
 - Use the optional chaining (`?.`) operator to traverse object properties or call a function or method.
-- Use ternary expressions (`condition ? valueIfTrue : valueIfFalse`) over simple `if..else` statements.
+- Use ternary expressions over simple `if..else` statements.
+
+  ```javascript
+  // Do this:
+  function foo(condition) {
+    return condition ? 'valueIfTrue' : 'valueIfFalse'
+  }
+
+  // Not this:
+  function foo(condition) {
+    if (condition) {
+      return 'valueIfTrue';
+    } else {
+      return 'valueIfFalse';
+    }
+  }
+  ```
+- If a ternary expression is too long break it down into multiple lines using the format in the following example.
+
+  ```typescript
+  // Do this:
+  function foo(condition) {
+    return condition
+      ? 'valueIfTrue'
+      : 'valueIfFalse';
+  }
+
+  // Not this:
+  function foo(condition) {
+    return condition
+      ? 'valueIfTrue' : 'valueIfFalse';
+  }
+  ```
 - Avoid using nested ternary expressions.
 - Prefer multiple small functions to a single large function.
 - Public API members should be documented by [JSDoc](https://jsdoc.app/) for JavaScript and [TSDoc](https://tsdoc.org/) for TypeScript.
@@ -41,17 +73,74 @@ Coding & Markup Style
 
 ### Markdown
 
-- Utilize the GitHub Flavored Markdown (GFM) dialect.
+- Utilize the [GitHub Flavored Markdown (GFM)](https://github.github.com/gfm/) dialect.
 - Documents should be formatted to optimize readability when viewed as plain text.
 - Headings should be immediately followed by a single empty line.
 - Use GFM task lists for tasks and to-do lists.
+
+  ```markdown
+  <!-- Do this: -->
+  - [ ] Create example component.
+
+  <!-- Not this: -->
+  - Create example component.
+  ```
 - Use GFM tables when displaying data in a tabular format when it would be optimal.
+
+  ````markdown
+  <!-- Do this: -->
+  | Foo | Hello |
+  |-----|-------|
+  | Bar | World |
+
+  <!-- Not this: -->
+  - **Foo**: Bar
+  - **Hello**: World
+  ````
 - Use Setext headings for level one and two headings and ATX headings for any other level.
 - Use a hyphen ("-") for bullet list markers.
-- Bold text should be formatted like so: `**text**`.
-- Italic text should be formatted like so: `_text_`.
+
+  ```markdown
+  <!-- Do this: -->
+  - Item A
+  - Item B
+
+  <!-- Not this: -->
+  * Item A
+  * Item B
+  ```
+- Bold text should be formatted using asterisks.
+
+  ```markdown
+  <!-- Do this: -->
+  **text**
+
+  <!-- Not this: -->
+  __text__
+  ```
+- Italic text should be formatted using underscores.
+
+  ```markdown
+  <!-- Do this: -->
+  _text_
+
+  <!-- Not this: -->
+  *text*
+  ```
 - For code samples use fenced code blocks with an info string where applicable.
-  - Use the long form over the short form for info strings (e.g., "typescript" instead of "ts").
+  - Use the long form over the short form for info strings.
+
+    ````markdown
+    <!-- Do this: -->
+    ```typescript
+    console.log('Hello, world!');
+    ```
+
+    <!-- Not this: -->
+    ```ts
+    console.log('Hello, world!');
+    ```
+    ````
   - Only use info strings supported by [linguist](https://github.com/github-linguist/linguist).
   - Since Zsh does not have a dedicated info string use either "shell" (e.g., to represent code in a script) or "sh-session" (e.g., to represent an interactive shell session), whichever is more applicable.
 - HTML can be used sparingly when it would enhance the semantics of a document (e.g., use `<dl>` for a description list or `<abbr>` (with the `title` attribute like so: `<abbr title="JavaScript Object Notation">JSON</abbr>`) for abbreviations).
@@ -87,7 +176,7 @@ Coding & Markup Style
 
   [EXAMPLE]: http://www.example.com/
   ```
-- If a file is named `CHANGELOG.md` and has the following in its head (allowing for version variations of the two URLs present) make sure any changes to it adhere to the [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) spec.
+- If a file is named `CHANGELOG.md` and has the following at the top of the document (allowing for version variations of the two URLs present) make sure any changes to it adhere to the [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) spec.
 
   ```markdown
   Changelog
@@ -109,7 +198,10 @@ Coding & Markup Style
 
 ### Zsh
 
-- A file is Zsh if it has the relevant shebang (e.g., `#!/usr/bin/env zsh`), a Zsh file extension (e.g., `script.zsh`), or is an explicit Zsh config file (e.g., `.zprofile`, `.zshenv`, `.zshrc`).
+- A file is Zsh if it any of the following criteria are met:
+  - Has the shebang: `#!/usr/bin/env zsh`.
+  - Has a Zsh file extension (e.g., `script.zsh`).
+  - Is a known Zsh config file (e.g., `.zprofile`, `.zshenv`, or `.zshrc`).
 - Prefer using Zsh specific features to plain POSIX shell.
 - Never write code outside of a function. If code doesn't need to be manually called and should be auto-executed then use an anonymous function as it provides scoping.
 
