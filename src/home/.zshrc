@@ -89,8 +89,16 @@ function {
 
   # Ensure the XDG runtime directory exists and has the appropriate permissions.
   if [[ -n "${XDG_RUNTIME_DIR}" ]]; then
-    mkdir -p "${XDG_RUNTIME_DIR}"
-    chmod 700 "${XDG_RUNTIME_DIR}"
+    if [[ ! -d "${XDG_RUNTIME_DIR}" ]]; then
+      mkdir -p "${XDG_RUNTIME_DIR}"
+    fi
+
+    if [[ ! -r "${XDG_RUNTIME_DIR}" ]] \
+      || [[ ! -w "${XDG_RUNTIME_DIR}" ]] \
+      || [[ ! -x "${XDG_RUNTIME_DIR}" ]]
+    then
+      chmod 700 "${XDG_RUNTIME_DIR}"
+    fi
   fi
 
   # Plugin Management
