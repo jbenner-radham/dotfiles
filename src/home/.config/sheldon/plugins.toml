@@ -98,15 +98,17 @@ apply = ["defer"]
 
 [plugins.zsh-history-substring-search.hooks]
 post = '''
-  # Make sure that the terminal is in application mode when zle is active, since
-  # only then are values from `$terminfo` valid.
-  # From: https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/key-bindings.zsh
-  if (( $+terminfo[smkx] )) && (( $+terminfo[rmkx] )); then
-    function zle-line-init() { echoti smkx }
-    function zle-line-finish() { echoti rmkx }
+  if (( ! $+terminfo[kcuu1] )) || (( ! $+terminfo[kcud1] )); then
+    # Make sure that the terminal is in application mode when zle is active,
+    # since only then are values from `$terminfo` valid.
+    # From: https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/key-bindings.zsh
+    if (( $+terminfo[smkx] )) && (( $+terminfo[rmkx] )); then
+      function zle-line-init() { echoti smkx }
+      function zle-line-finish() { echoti rmkx }
 
-    zle -N zle-line-init
-    zle -N zle-line-finish
+      zle -N zle-line-init
+      zle -N zle-line-finish
+    fi
   fi
 
   bindkey "${terminfo[kcuu1]}" history-substring-search-up
