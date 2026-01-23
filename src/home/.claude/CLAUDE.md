@@ -3,7 +3,7 @@ Coding & Markup Style
 
 ### Universal Guidelines
 
-- If a project has an `.editorconfig` file, read it and apply any relevant formatting rules to your context.
+- If a project has an [EditorConfig](https://editorconfig.org/) file (`.editorconfig`), read it and apply any relevant formatting rules to your context.
   - Wildcard sections apply to all files (e.g., `[*]`).
   - More specific section globs inherit from the wildcard sections configuration (e.g., `[*.zsh]` would inherit from `[*]` for a file named `example.zsh`).
   - If `max_line_length` is set, treat it as a strong preference and not a hard requirement. Specifically if long URLs make a line exceed that length it is acceptable.
