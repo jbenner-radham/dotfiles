@@ -65,3 +65,4 @@ Coding & Markup Style
 - All variables should be locally scoped.
 - Where applicable make variables read only. Don't do it where it would be problematic. For instance if it would "swallow" the exit code and not catch errors (e.g., `local -r example="$(curl http://www.example.com/)"`).
 - For variables that have array tied special variants (e.g., `$PATH` and `$FPATH`) prefer using those (e.g., `path+=('/path/to/source')` instead of `PATH="${PATH}:/path/to/source`).
+- When adding items to the path or fpath ensure that they are not already present (e.g., `if (( ! $path[(Ie)/path/to/source] )); then path+=(/path/to/source); fi`).
