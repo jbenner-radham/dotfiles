@@ -70,6 +70,17 @@ Coding & Markup Style
   // Not this:
   import path from 'path';
   ```
+- Use numeric separators (`_`) to visually break up numbers which are greater than or equal to 1,000.
+
+  ```typescript
+  // Do this:
+  const oneThousand = 1_000;
+  const oneMillion = 1_000_000;
+
+  // Not this:
+  const oneThousand = 1000;
+  const oneMillion = 1000000;
+  ```
 
 ### Markdown
 
