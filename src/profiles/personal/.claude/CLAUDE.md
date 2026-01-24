@@ -60,4 +60,4 @@ Coding & Markup Style
 - Prefer using Zsh specific features to Bash or POSIX shell features.
 - Never write code outside of a function. If code doesn't need to be manually called and should be auto-executed then use an anonymous function as it provides scoping (e.g., `function { ... }`).
 - All variables should be locally scoped (e.g., `local var='value'`).
-- Where applicable make variables read only (e.g., `local -r var='value'`). Don't do it where it would be problematic. For instance if it would "swallow" the exit code and not catch errors (e.g., assignment via a subshell).
+- Where applicable make variables read only (e.g., `local -r var='value'`). Don't do it where it would be problematic. For instance if it would "swallow" the exit code and not catch errors (e.g., assignment from a subshell).
