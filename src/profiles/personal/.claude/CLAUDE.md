@@ -57,7 +57,7 @@ Coding & Markup Style
   - Has the shebang: `#!/usr/bin/env zsh`.
   - Has a Zsh file extension (e.g., `script.zsh`).
   - Is a known Zsh config file (e.g., `.zprofile`, `.zshenv`, or `.zshrc`).
-- Prefer using Zsh specific features to plain POSIX shell.
-- Never write code outside of a function. If code doesn't need to be manually called and should be auto-executed then use an anonymous function as it provides scoping.
-- All variables should be locally scoped.
-- Where applicable make variables read only. Don't do it where it would be problematic. For instance if it would "swallow" the exit code and not catch errors.
+- Prefer using Zsh specific features to Bash or POSIX shell features.
+- Never write code outside of a function. If code doesn't need to be manually called and should be auto-executed then use an anonymous function as it provides scoping (e.g., `function { ... }`).
+- All variables should be locally scoped (e.g., `local var='value'`).
+- Where applicable make variables read only (e.g., `local -r var='value'`). Don't do it where it would be problematic. For instance if it would "swallow" the exit code and not catch errors (e.g., assignment via a subshell).
