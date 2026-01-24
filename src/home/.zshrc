@@ -12,7 +12,8 @@ function {
   # ==================
 
   # Since `.zprofile` doesn't appear to be loaded on Ubuntu init Homebrew here.
-  if [[ "$(uname)" == 'Linux' ]] \
+  # NOTE: `$OSTYPE` is available in Zsh (and Bash), but not Dash.
+  if [[ "${OSTYPE}" == 'linux'* ]] \
     && [[ -x '/home/linuxbrew/.linuxbrew/bin/brew' ]]
   then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -52,7 +53,7 @@ function {
 
   local -r application_support="${HOME}/Library/Application Support"
 
-  if [[ "$(uname)" == 'Darwin' ]] \
+  if [[ "${OSTYPE}" == 'darwin'* ]] \
     && [[ -d "${application_support}/JetBrains/Toolbox/scripts" ]] \
     && (( ! $path[(Ie)${application_support}/JetBrains/Toolbox/scripts] ))
   then
@@ -88,17 +89,8 @@ function {
   # =====================
 
   # Ensure the XDG runtime directory exists and has the appropriate permissions.
-  if [[ -n "${XDG_RUNTIME_DIR}" ]]; then
-    if [[ ! -d "${XDG_RUNTIME_DIR}" ]]; then
-      mkdir -p "${XDG_RUNTIME_DIR}"
-    fi
-
-    if [[ ! -r "${XDG_RUNTIME_DIR}" ]] \
-      || [[ ! -w "${XDG_RUNTIME_DIR}" ]] \
-      || [[ ! -x "${XDG_RUNTIME_DIR}" ]]
-    then
-      chmod 700 "${XDG_RUNTIME_DIR}"
-    fi
+  if [[ -n "${XDG_RUNTIME_DIR}" ]] && [[ ! -d "${XDG_RUNTIME_DIR}" ]]; then
+    mkdir -m 700 -p "${XDG_RUNTIME_DIR}"
   fi
 
   # Plugin Management
@@ -125,10 +117,13 @@ function {
   # =======================
 
   # Add Homebrew completions to `$FPATH`.
-  local -r site_functions="$(brew --prefix)/share/zsh/site-functions"
+  if (( $+commands[brew] )); then
+    # We use `$HOMEBREW_PREFIX` over `$(brew --prefix)` to optimize performance.
+    local -r site_functions="${HOMEBREW_PREFIX}/share/zsh/site-functions"
 
-  if [[ -d "${site_functions}" ]] && (( ! $fpath[(Ie)$site_functions] )); then
-    fpath=($site_functions $fpath)
+    if [[ -d "${site_functions}" ]] && (( ! $fpath[(Ie)$site_functions] )); then
+      fpath=("${site_functions}" $fpath)
+    fi
   fi
 
   # We don't need to export `$FPATH` since we invoke `compinit` directly below.
