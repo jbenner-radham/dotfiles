@@ -27,7 +27,7 @@ Install Homebrew:
 Install the Homebrew packages:
 
 ```shell
-brew bundle install --file ./src/home/.config/homebrew/Brewfile
+brew bundle install --file ./src/profiles/base/.config/homebrew/Brewfile
 ```
 
 Configure Docker plugins from Homebrew:

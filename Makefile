@@ -1,10 +1,10 @@
 # vim: set noexpandtab:
 
 UNAME := $(shell uname)
-ZSH_SCRIPT_PATHS := src/home/.zprofile \
-	src/home/.zshenv                     \
-	src/home/.zshrc                      \
-	$(wildcard src/home/.local/bin/*)    \
+ZSH_SCRIPT_PATHS := src/profiles/base/.zprofile \
+	src/profiles/base/.zshenv                     \
+	src/profiles/base/.zshrc                      \
+	$(wildcard src/profiles/base/.local/bin/*)    \
 	$(shell find . -path './.git' -prune -or -name '*.zsh' -type f -print)
 
 ifeq ($(UNAME),Darwin)
@@ -37,32 +37,34 @@ endif
 
 default: lint
 
-install: test $(PLATFORM_INSTALL) $(PROFILE_INSTALL) install-lesskey
-	@rsync --exclude '.keep' --exclude '.config/Code' \
-		--exclude '.claude/CLAUDE.personal.md' --exclude '.claude/CLAUDE.work.md' \
-		--mkpath --recursive --times --verbose src/home/ "${HOME}"
+install: test $(PLATFORM_INSTALL) install-base-only $(PROFILE_INSTALL) \
+	install-lesskey
 
 install-darwin-only:
 	@rsync --mkpath --recursive --times --verbose \
-		src/home/.config/Code "${HOME}/Library/Application Support"
+		src/profiles/base/.config/Code "${HOME}/Library/Application Support"
 
 install-lesskey:
 	@./src/print-lesskey.zsh > "${HOME}/.lesskey"
 
 install-linux-only:
 	@rsync --mkpath --recursive --times --verbose \
-		src/home/.config/Code "${HOME}/.config"
+		src/profiles/base/.config/Code "${HOME}/.config"
+
+install-base-only:
+	@rsync --exclude '.keep' --exclude '.config/Code' \
+		--mkpath --recursive --times --verbose src/profiles/base/ "${HOME}"
 
 install-personal-only:
-	@rsync --mkpath --recursive --times --verbose \
-		src/home/.claude/CLAUDE.personal.md "${HOME}/.claude/CLAUDE.md"
+	@rsync --exclude '.keep' --mkpath --recursive --times --verbose \
+		src/profiles/personal/ "${HOME}"
 
 install-work-only:
-	@rsync --mkpath --recursive --times --verbose \
-		src/home/.claude/CLAUDE.work.md "${HOME}/.claude/CLAUDE.md"
+	@rsync --exclude '.keep' --mkpath --recursive --times --verbose \
+		src/profiles/work/ "${HOME}"
 
 lint:
-	@shellcheck src/home/.local/bin/*
+	@shellcheck src/profiles/base/.local/bin/*
 
 test:
 	@for path in $(ZSH_SCRIPT_PATHS); do zsh --no-exec "$${path}"; done
