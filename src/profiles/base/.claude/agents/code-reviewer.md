@@ -70,7 +70,7 @@ Structure your review as follows:
 
 ### Summary
 
-Provide a brief overall assessment (2-3 sentences) including the general quality level and most critical findings.
+Provide a brief overall assessment (2-3 sentences) including the general quality level and most critical findings. Include specific fix examples with proper syntax highlighting.
 
 ### Critical Issues 🔴
 
