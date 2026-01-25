@@ -3,10 +3,6 @@ Coding & Markup Style
 
 ### Universal Guidelines
 
-- If a project has an [EditorConfig](https://editorconfig.org/) file (`.editorconfig`), read it and apply any relevant formatting rules to your context.
-  - Wildcard sections apply to all files (e.g., `[*]`).
-  - More specific section globs inherit from the wildcard sections configuration (e.g., `[*.zsh]` would inherit from `[*]` for a file named `example.zsh`).
-  - If `max_line_length` is set, treat it as a strong preference and not a hard requirement. Specifically if long URLs make a line exceed that length it is acceptable.
 - If you are unsure about a style issue, ask clarifying questions.
 - Prefer readability over "clever" code or compact markdown.
 - Code should be as concise as possible without sacrificing readability.
@@ -15,7 +11,6 @@ Coding & Markup Style
 
 ### JavaScript & TypeScript
 
-- If a project has a [Prettier](https://prettier.io/) configuration (see [here](https://prettier.io/docs/configuration) for reference) abide by its formatting rules. Don't forget to account for the configuration defaults as well if a configuration parameter is not explicitly set in the project.
 - Prefer a functional programming style.
   - Prefer immutable data unless using it would make code significantly more verbose or less performant.
   - Use functional array methods (e.g., `map`, `reduce`, `filter`, etc.) instead of `for` loops. Use `forEach` only when side effects are intentional.
