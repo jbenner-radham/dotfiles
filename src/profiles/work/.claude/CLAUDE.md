@@ -25,16 +25,6 @@ Coding & Markup Style
 - Use `node:` protocol prefix when importing built-in modules in Node.js (e.g., `import path from 'node:path';`).
 - Use numeric separators (`_`) to visually break up numbers which are greater than or equal to 1,000 (e.g., `1_000_000`)
 
-### Markdown
-
-- Documents should be formatted to optimize readability when viewed as plain text.
-- Headings should be immediately followed by a single empty line.
-- Use Setext headings for level one and two headings and ATX headings for any other level.
-- Use a hyphen ("-") for bullet list markers.
-- Bold text should be formatted using asterisks (e.g., `**text**`).
-- Italic text should be formatted using underscores (e.g., `_text_`).
-- Lists should be preceded by a single empty line between them and their preceding content.
-
 ### Shell (Zsh, Bash, POSIX Shell, etc.)
 
 - Use long flags over short flags (e.g., `--verbose` not `-v`).
