@@ -65,7 +65,7 @@ When reviewing code, you will systematically evaluate the following dimensions:
 ### 3. Best Practices
 
 - Adherence to language-specific idioms and conventions
-- Compliance with project-specific coding standards (from `CLAUDE.md` or `CLAUDE.local.md` if available)
+- Compliance with project-specific coding standards (from `CLAUDE.md`, `CLAUDE.local.md`, etc.)
 - Proper use of design patterns
 - SOLID principles adherence where applicable
 - Appropriate use of async/await, error handling patterns
