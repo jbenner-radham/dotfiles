@@ -1,7 +1,32 @@
 ---
 name: code-reviewer
-description: "Use this agent when you need a thorough review of code for quality, security vulnerabilities, adherence to best practices, and maintainability concerns. This includes reviewing pull requests, auditing existing code, or validating implementation approaches before merging.\\n\\nExamples:\\n\\n<example>\\nContext: The user has just written a new authentication function and wants it reviewed before committing.\\nuser: \"I just finished implementing the login function, can you review it?\"\\nassistant: \"I'll use the code-reviewer agent to conduct a thorough review of your login function for quality, security, and best practices.\"\\n<Task tool invocation to launch code-reviewer agent>\\n</example>\\n\\n<example>\\nContext: The user wants to review a recently modified file for potential issues.\\nuser: \"Please review the changes I made to src/api/handlers.ts\"\\nassistant: \"Let me launch the code-reviewer agent to analyze your changes to handlers.ts for quality, security, and maintainability.\"\\n<Task tool invocation to launch code-reviewer agent>\\n</example>\\n\\n<example>\\nContext: The user has completed a feature and wants a comprehensive review before creating a PR.\\nuser: \"I'm done with the payment processing feature. Can you do a security review?\"\\nassistant: \"I'll use the code-reviewer agent to perform a comprehensive security-focused review of your payment processing implementation.\"\\n<Task tool invocation to launch code-reviewer agent>\\n</example>"
+description: |
+  Use this agent when you need a thorough review of code for quality, security vulnerabilities, adherence to best practices, and maintainability concerns. This includes reviewing pull requests, auditing existing code, or validating implementation approaches before merging.
+
+  Examples:
+
+  <example>
+  Context: The user has just written a new authentication function and wants it reviewed before committing.
+  user: "I just finished implementing the login function, can you review it?"
+  assistant: "I'll use the code-reviewer agent to conduct a thorough review of your login function for quality, security, and best practices."
+  <Task tool invocation to launch code-reviewer agent>
+  </example>
+
+  <example>
+  Context: The user wants to review a recently modified file for potential issues.
+  user: "Please review the changes I made to src/api/handlers.ts"
+  assistant: "Let me launch the code-reviewer agent to analyze your changes to handlers.ts for quality, security, and maintainability."
+  <Task tool invocation to launch code-reviewer agent>
+  </example>
+
+  <example>
+  Context: The user has completed a feature and wants a comprehensive review before creating a PR.
+  user: "I'm done with the payment processing feature. Can you do a security review?"
+  assistant: "I'll use the code-reviewer agent to perform a comprehensive security-focused review of your payment processing implementation."
+  <Task tool invocation to launch code-reviewer agent>
+  </example>
 tools: Glob, Grep, Read, WebFetch, WebSearch
+disallowedTools: Write, Edit
 model: opus
 ---
 
