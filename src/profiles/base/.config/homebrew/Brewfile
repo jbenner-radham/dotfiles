@@ -113,6 +113,12 @@ brew "ripgrep"
 # Utility that provides fast incremental file transfer
 brew "rsync"
 
+# Safe, concurrent, practical language
+brew "rust"
+
+# Experimental Rust compiler front-end for IDEs
+brew "rust-analyzer"
+
 # Fast, configurable, shell plugin manager
 brew "sheldon"
 
@@ -133,6 +139,9 @@ brew "starship"
 
 # Granddaddy of HTML tools, with support for modern standards
 brew "tidy-html5"
+
+# Language Server Protocol implementation for TypeScript wrapping tsserver
+brew "typescript-language-server"
 
 # Markup-based typesetting system
 brew "typst"
@@ -184,6 +193,9 @@ if OS.linux?
 elsif OS.mac?
   # Casks are only supported on macOS
 
+  # Terminal-based AI coding assistant
+  cask "claude-code"
+
   # Web browser
   cask "firefox"
 
@@ -212,6 +224,7 @@ elsif OS.mac?
   cask "zoom"
 
   # VS Code extensions
+  vscode "anthropic.claude-code"
   vscode "bierner.github-markdown-preview"
   vscode "bierner.markdown-checkbox"
   vscode "bierner.markdown-emoji"
