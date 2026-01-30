@@ -5,7 +5,7 @@ Coding & Markup Style
 
 - Prefer readability over "clever" code or compact markdown.
 - Code should be as concise as possible without sacrificing readability.
-- Write self-documenting code and use comments sparingly. When we do write them, make sure they're for explaining the "why" or the context behind the function, method, etc.
+- Write self-documenting code and use comments sparingly. When they are used, they should be for explaining the "why" not the "what".
 
 ### JavaScript & TypeScript
 

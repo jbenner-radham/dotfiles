@@ -6,8 +6,8 @@ Coding & Markup Style
 - If you are unsure about a style issue, ask clarifying questions.
 - Prefer readability over "clever" code or compact markdown.
 - Code should be as concise as possible without sacrificing readability.
-- Write self-documenting code and use comments sparingly. When we do write them, make sure they're for explaining the "why" or the context behind the function, method, etc.
-- For files with shebangs always use `/usr/bin/env` (e.g., `#!/usr/bin/env node` for Node.js scripts and `#!/usr/bin/env zsh` for Zsh scripts). Do not use a direct path to the binary (e.g., `#!/bin/zsh`, `#!/bin/sh`, etc.)
+- Write self-documenting code and use comments sparingly. When they are used, they should be for explaining the "why" not the "what".
+- For files with shebangs always use `/usr/bin/env` (e.g., `#!/usr/bin/env node` for Node.js scripts, `#!/usr/bin/env zsh` for Zsh scripts, etc.). Do not use a direct path to the binary (e.g., `#!/bin/zsh`, `#!/bin/sh`, etc.)
 
 ### JavaScript & TypeScript
 
