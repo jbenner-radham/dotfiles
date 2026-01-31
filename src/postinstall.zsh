@@ -11,6 +11,14 @@ function {
   # setopt XTRACE  # Print commands and their arguments as they are executed.
 
   if (( $+commands[claude] )); then
+    if (( $+commands[rust-analyzer] )); then
+      claude plugin install rust-analyzer-lsp@claude-plugins-official
+
+      if [[ $(claude plugin list --json | jq '.[] | select(.id == "typescript-lsp@claude-plugins-official").enabled') != true ]]; then
+        claude plugin enable rust-analyzer-lsp@claude-plugins-official
+      fi
+    fi
+
     if (( $+commands[typescript-language-server] )); then
       claude plugin install typescript-lsp@claude-plugins-official
 
