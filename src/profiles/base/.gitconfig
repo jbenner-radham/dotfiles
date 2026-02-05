@@ -7,3 +7,7 @@
 	excludesFile = ~/.config/git/ignore
 [push]
 	autoSetupRemote = true
+[alias]
+  set-upstream-push = "!f() { \
+    git push --set-upstream origin $(git branch --show-current); \
+  }; f"
