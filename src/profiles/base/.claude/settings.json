@@ -5,14 +5,15 @@
   },
   "permissions": {
     "allow": [
-      "Bash(npm run lint*)",
-      "Bash(npm test*)",
-      "Bash(npx eslint*)",
-      "Bash(npx tsc --noEmit*)",
-      "Bash(pnpm exec eslint*)",
-      "Bash(pnpm exec tsc --noEmit*)",
-      "Bash(pnpm run lint*)",
-      "Bash(pnpm test*)"
+      "Bash(npm run lint:*)",
+      "Bash(npm test:*)",
+      "Bash(npx eslint:*)",
+      "Bash(npx jest:*)",
+      "Bash(npx tsc --noEmit:*)",
+      "Bash(pnpm exec eslint:*)",
+      "Bash(pnpm exec tsc --noEmit:*)",
+      "Bash(pnpm run lint:*)",
+      "Bash(pnpm test:*)"
     ],
     "deny": [
       "Read(.env)"
