@@ -1,11 +1,13 @@
 # vim: set noexpandtab:
 
+BASE_PROFILE := src/profiles/base
 UNAME := $(shell uname)
-ZSH_SCRIPT_PATHS := src/profiles/base/.zprofile \
-	src/profiles/base/.zshenv                     \
-	src/profiles/base/.zshrc                      \
-	$(wildcard src/profiles/base/.local/bin/*)    \
-	$(shell find . -path './.git' -prune -or -name '*.zsh' -type f -print)
+ZSH_CONFIG_FILES := .zprofile .zshenv .zshrc
+ZSH_SCRIPT_PATHS := \
+	$(foreach file,$(ZSH_CONFIG_FILES),$(BASE_PROFILE)/$(file)) \
+	$(wildcard $(BASE_PROFILE)/.local/bin/*) \
+	$(shell find . -path './.git' -prune -or -name '*.zsh' -type f -print | \
+		sed 's/^.\///')
 
 ifeq ($(UNAME),Darwin)
 	PLATFORM_INSTALL := install-darwin-only
