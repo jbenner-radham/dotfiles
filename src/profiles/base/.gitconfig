@@ -8,6 +8,11 @@
 [push]
 	autoSetupRemote = true
 [alias]
+  oclc-commit = "!f() { \
+    git commit --message=\"$( \
+      expr \"$(git branch --show-current)\" : '\\([a-z]*/[A-Z]*-[0-9]*\\).*' \
+    )\"\": ${1}\"; \
+  }; f"
   set-upstream-push = "!f() { \
     git push --set-upstream origin $(git branch --show-current); \
   }; f"
