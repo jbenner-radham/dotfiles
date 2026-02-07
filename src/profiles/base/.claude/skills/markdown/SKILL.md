@@ -26,7 +26,6 @@ Use ATX-style for level 3 and deeper:
 ```markdown
 ### Subsection
 
-
 #### Sub-subsection
 ```
 
