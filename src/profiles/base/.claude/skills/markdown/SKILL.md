@@ -53,6 +53,25 @@ console.log('Hello world!');
 git diff
 ```
 
+Always include an info string with a fenced code block and use long form names over abbreviations.
+
+````markdown
+<!-- Good -->
+```typescript
+console.log('Hello, world!');
+```
+
+<!-- Bad (no info string) -->
+```
+console.log('Hello, world!');
+```
+
+<!-- Bad (abbreviated info string) -->
+```ts
+console.log('Hello, world!');
+```
+````
+
 Spacing
 -------
 
