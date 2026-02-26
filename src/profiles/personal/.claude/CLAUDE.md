@@ -8,6 +8,7 @@ Coding & Markup Style
 - Code should be as concise as possible without sacrificing readability.
 - Write self-documenting code and use comments sparingly. When they are used, they should be for explaining the "why" not the "what".
 - For files with shebangs always use `/usr/bin/env` (e.g., `#!/usr/bin/env node` for Node.js scripts, `#!/usr/bin/env zsh` for Zsh scripts, etc.). Do not use a direct path to the binary (e.g., `#!/bin/zsh`, `#!/bin/sh`, etc.)
+- DO NOT introduce regressions when adding new features or fixing bugs.
 
 ### JavaScript & TypeScript
 
