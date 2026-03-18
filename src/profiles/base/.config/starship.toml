@@ -2,7 +2,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 # Timeout for commands executed by starship (in milliseconds).
-command_timeout = 1_500
+command_timeout = 2_500
 
 format = """
 $username\
