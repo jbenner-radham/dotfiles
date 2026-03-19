@@ -38,6 +38,15 @@ function {
     export GOPATH="${XDG_DATA_HOME}/go"
   fi
 
+  # Load profile level `.env` if present.
+  () {
+    setopt LOCAL_OPTIONS ALL_EXPORT
+
+    if [[ -f "${XDG_CONFIG_HOME}/.env" ]]; then
+      source "${XDG_CONFIG_HOME}/.env"
+    fi
+  }
+
   # Add items to the path.
   if [[ -d "${HOME}/.local/bin" ]] && (( ! $path[(Ie)${HOME}/.local/bin] )); then
     path=("${HOME}/.local/bin" $path)
