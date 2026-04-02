@@ -4,6 +4,7 @@
     "commit": "",
     "pr": ""
   },
+  "autoUpdatesChannel": "stable",
   "permissions": {
     "allow": [
       "Bash(npm run lint:*)",
