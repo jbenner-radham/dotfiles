@@ -16,3 +16,12 @@
   set-upstream-push = "!f() { \
     git push --set-upstream origin $(git branch --show-current); \
   }; f"
+  show-parent-branch = "!f() { \
+    current=$(git symbolic-ref --quiet --short HEAD) \
+      || { printf 'error: HEAD is detached\\n' >&2; return 1; }; \
+    git show-branch --no-color 2>/dev/null \
+      | sed -n 's/].*//; /\\*/p' \
+      | sed 's/.*\\[//; s/[~^].*//' \
+      | grep -vxF \"$current\" \
+      | head -n1; \
+  }; f"
