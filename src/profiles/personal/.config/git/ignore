@@ -1,5 +1,8 @@
+.claude/
 .fleet/
 .idea/
 .vscode/
+agent-memory-local/
 .DS_Store
 CLAUDE.local.md
+settings.local.json

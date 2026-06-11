@@ -1,0 +1,7 @@
+.fleet/
+.idea/
+.vscode/
+/cataloging-ui/cataloging-ui-modern/.claude/
+agent-memory-local/
+.DS_Store
+CLAUDE.local.md
