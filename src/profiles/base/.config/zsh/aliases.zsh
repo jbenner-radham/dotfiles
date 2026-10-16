@@ -34,6 +34,11 @@ if (( $+commands[prettybat] )); then
   alias pbat='prettybat'
 fi
 
+# Timeout (from coreutils on macOS)
+if (( ! $+commands[timeout] && $+commands[gtimeout] )); then
+  alias timeout='gtimeout'
+fi
+
 # Pretty Print Path
 alias ppath='print -l ${path}'
 
